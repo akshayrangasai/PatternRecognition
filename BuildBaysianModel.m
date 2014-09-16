@@ -41,6 +41,15 @@ for i = 1:m
     class_matrices(:,:,find(classes,trainData(i,-1)) = trainData(trainData(i,1:n);
 end
 
+cov_matrices = zeros(n,n,k);
+mean_matrices = zeros(n,k);
+determinants = zeros(k);
+for i = 1:k
+    cov_matrices(:.:.i) = cov(class_matrices(:,:,i);
+    mean_matrices(:,i) = mean(class_matrices(:,:,i));
+    determinants(i) = det(cov_matrices(:,:,i));
+end
+
 
 
 model = cell(k, 2);

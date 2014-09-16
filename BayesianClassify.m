@@ -27,5 +27,5 @@ k = size(model, 1); % number of classes
 classLabels  = zeros(m,1);
 
 % Complete the function
-
+% SEX SEX SEX SEX
 end

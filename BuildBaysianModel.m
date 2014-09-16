@@ -31,6 +31,17 @@ function [model] = BuildBaysianModel(trainData, crossValidationData, caseNumber)
 m = size(trainData, 1); % number of training examples
 n = size(trainData, 2) - 1; % number of feature dimension
 k = length(unique(trainData(:, end))); % number of classes
+classes = unique(trainData(:, end));
+
+class_matrices = zeros(m,n,k);
+
+%Splitting the data into class matrices, so that we can find the mean and
+%variance for each class for the multinomial distribution.
+for i = 1:m
+    class_matrices(:,:,find(classes,trainData(i,-1)) = trainData(trainData(i,1:n);
+end
+
+
 
 model = cell(k, 2);
 

@@ -32,7 +32,7 @@ m = size(trainData, 1); % number of training examples
 n = size(trainData, 2) - 1; % number of feature dimension
 k = length(unique(trainData(:, end))); % number of classes
 classes = unique(trainData(:, end));
-
+model = cell(k, 2);
 class_matrices = zeros(m,n,k);
 
 %Splitting the data into class matrices, so that we can find the mean and
@@ -41,18 +41,18 @@ for i = 1:m
     class_matrices(:,:,find(classes,trainData(i,-1)) = trainData(trainData(i,1:n);
 end
 
-cov_matrices = zeros(n,n,k);
-mean_matrices = zeros(n,k);
-determinants = zeros(k);
+%cov_matrices = zeros(n,n,k);
+%mean_matrices = zeros(n,k);
+%determinants = zeros(k);
 for i = 1:k
-    cov_matrices(:.:.i) = cov(class_matrices(:,:,i);
-    mean_matrices(:,i) = mean(class_matrices(:,:,i));
-    determinants(i) = det(cov_matrices(:,:,i));
+    model(k,2) = cov(class_matrices(:,:,i);
+    model(k,1) = mean(class_matrices(:,:,i));
+    %determinants(i) = det(cov_matrices(:,:,i));
 end
 
 
 
-model = cell(k, 2);
+
 
 % Complete the function
 

@@ -68,12 +68,22 @@ end
 
 
 if(caseNumber == 3)
+    
+    varmat = zeros(1,k)
     for i = 1:k
-        C = C + (1/k)*diag(diag((cov(class_matrices(:,:,i)))));
+        varmat(1,i) = var(diag(class_matrices(:,:,i)));
     end
     
+    var = 0;
+    
     for i = 1:k
-        model(k,2) = mean(diag(cov(class_matrices(:,:,i)))));
+        var = var + (shape(class_matrices(:,:,i),1)-1)*varmat(1,i);
+    end
+    
+    var = var/(m-k);
+    
+    for i = 1:k
+        model(k,2) = var*eye(n);
     end
         
 end

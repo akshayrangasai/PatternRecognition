@@ -34,14 +34,20 @@ k = length(unique(trainData(:, end))); % number of classes
 classes = unique(trainData(:, end));
 model = cell(k, 2);
 class_matrices = zeros(m,n,k);
-
+C = zeros(n,n);
 %%For the combination of covariance matrices, we'll use the pooled
 %%covariance, mean and Wishart distribution estimates for the model.
 %%Whichever works the best. 
-
-
+for i = 1:m
+        class_matrices(:,:,find(classes,trainData(i,-1)) = trainData(trainData(i,1:n);
+end
+%% Avegaing out the Cov Matrices %%
 if(caseNumber == 1)
-    C = cov(trainData(:,1:n));
+    
+    for i = 1:k
+    C = C + (1/k)*(cov(class_matrices(:,:,i)));
+    end
+    
     for i = 1:k
         model(k,2) = C;%cov(class_matrices(:,:,i);
     end
@@ -51,15 +57,51 @@ if(caseNumber == 2)
     
 %Splitting the data into class matrices, so that we can find the mean and
 %variance for each class for the multinomial distribution.
-    for i = 1:m
-        class_matrices(:,:,find(classes,trainData(i,-1)) = trainData(trainData(i,1:n);
-    end
 
 %cov_matrices = zeros(n,n,k);
 %mean_matrices = zeros(n,k);
 %determinants = zeros(k);
     for i = 1:k
-        model(k,2) = cov(class_matrices(:,:,i);
+        model(k,2) = cov(class_matrices(:,:,i));
+    end
+end
+
+
+if(caseNumber == 3)
+    for i = 1:k
+        C = C + (1/k)*diag(diag((cov(class_matrices(:,:,i)))));
+    end
+    
+    for i = 1:k
+        model(k,2) = mean(diag(cov(class_matrices(:,:,i)))));
+    end
+        
+end
+
+
+
+if(caseNumber == 4)
+    for i = 1:k
+        C = C + (1/k)*diag(diag((cov(class_matrices(:,:,i)))));
+    end
+    
+    for i = 1:k
+        model(k,2) = C;%cov(class_matrices(:,:,i);
+    end
+        
+end
+
+    
+if(caseNumber == 5)
+    
+%Splitting the data into class matrices, so that we can find the mean and
+%variance for each class for the multinomial distribution.
+
+%cov_matrices = zeros(n,n,k);
+%mean_matrices = zeros(n,k);
+%determinants = zeros(k);
+    for i = 1:k
+        model(k,2) = diag(diag(cov(class_matrices(:,:,i))));
     end
 end
 

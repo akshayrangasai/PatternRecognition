@@ -26,6 +26,9 @@ k = size(model, 1); % number of classes
 
 classLabels  = zeros(m,1);
 
+for i=1:k
+    p(k) = (2*pi)^(-n/2) * det(covar)^0.5 * exp(-0.5*(bsxfun(@minus,testData,model(i,1)))'*inv(model(i,2))*(bsxfun(@minus,testData,model(i,1))));
+end
+
 % Complete the function
-% SEX SEX SEX SEX
 end

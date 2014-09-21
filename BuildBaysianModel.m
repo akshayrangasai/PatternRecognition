@@ -28,6 +28,13 @@ function [model] = BuildBaysianModel(trainData, crossValidationData, caseNumber)
 % See Also : BayesianClassify.m
 %
 
+
+%%
+
+%To DO:
+
+%Variance coupling. Try wishart distribution thing. Should be good.
+%%
 m = size(trainData, 1); % number of training examples
 n = size(trainData, 2) - 1; % number of feature dimension
 k = length(unique(trainData(:, end))) % number of classes

@@ -30,16 +30,19 @@ function [model] = BuildBaysianModel(trainData, crossValidationData, caseNumber)
 
 m = size(trainData, 1); % number of training examples
 n = size(trainData, 2) - 1; % number of feature dimension
-k = length(unique(trainData(:, end))); % number of classes
+k = length(unique(trainData(:, end))) % number of classes
 classes = unique(trainData(:, end));
 model = cell(k, 2);
 class_matrices = zeros(m,n,k);
 C = zeros(n,n);
+counts = ones(1,k);
 %%For the combination of covariance matrices, we'll use the pooled
 %%covariance, mean and Wishart distribution estimates for the model.
 %%Whichever works the best. 
 for i = 1:m
-        class_matrices(:,:,find(classes,trainData(i,-1)) = trainData(trainData(i,1:n);
+
+        class_matrices(counts(1,trainData(i,n+1)),:,trainData(i,n+1)) = trainData(i,1:n);
+        counts(1,trainData(i,n+1)) = counts(1,trainData(i,n+1)) + 1;
 end
 %% Avegaing out the Cov Matrices %%
 if(caseNumber == 1)
@@ -49,7 +52,7 @@ if(caseNumber == 1)
     end
     
     for i = 1:k
-        model(k,2) = C;%cov(class_matrices(:,:,i);
+        model(i,2) = mat2cell(C);%cov(class_matrices(:,:,i);
     end
 end
     
@@ -62,28 +65,28 @@ if(caseNumber == 2)
 %mean_matrices = zeros(n,k);
 %determinants = zeros(k);
     for i = 1:k
-        model(k,2) = cov(class_matrices(:,:,i));
+        model(i,2) = {cov(class_matrices(:,:,i))};
     end
 end
 
 
 if(caseNumber == 3)
     
-    varmat = zeros(1,k)
+    varmat = zeros(1,k);
     for i = 1:k
         varmat(1,i) = var(diag(class_matrices(:,:,i)));
     end
     
-    var = 0;
+    varz = 0;
     
     for i = 1:k
-        var = var + (shape(class_matrices(:,:,i),1)-1)*varmat(1,i);
+        varz = varz + (shape(class_matrices(:,:,i),1)-1)*varmat(1,i);
     end
     
-    var = var/(m-k);
+    varz = varz/(m-k);
     
     for i = 1:k
-        model(k,2) = var*eye(n);
+        model(i,2) = {varz*eye(n)};
     end
         
 end
@@ -96,7 +99,7 @@ if(caseNumber == 4)
     end
     
     for i = 1:k
-        model(k,2) = C;%cov(class_matrices(:,:,i);
+        model(i,2) = {C};%cov(class_matrices(:,:,i);
     end
         
 end
@@ -111,13 +114,13 @@ if(caseNumber == 5)
 %mean_matrices = zeros(n,k);
 %determinants = zeros(k);
     for i = 1:k
-        model(k,2) = diag(diag(cov(class_matrices(:,:,i))));
+        model(i,2) = {diag(diag(cov(class_matrices(:,:,i))))};
     end
 end
 
 
 for i = 1:k
-    model(k,1) = mean(class_matrices(:,:,i));
+    model(i,1) = mat2cell(mean(class_matrices(:,:,i)));
     %determinants(i) = det(cov_matrices(:,:,i));
 end
 

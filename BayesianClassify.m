@@ -25,9 +25,21 @@ n = size(testData, 2); % number of feature dimension
 k = size(model, 1); % number of classes
 
 classLabels  = zeros(m,1);
-
-for i=1:k
-    p(k) = (2*pi)^(-n/2) * det(covar)^0.5 * exp(-0.5*(bsxfun(@minus,testData,model(i,1)))'*inv(model(i,2))*(bsxfun(@minus,testData,model(i,1))));
+for l = 1:m
+p_i = 0;
+maxlab = 0;    
+    for i=1:k
+    p = (1/((2*pi)^(-n/2) * det(cell2mat(model(i,2)))^0.5)) * exp(-0.5*(bsxfun(@minus,testData(l,:),cell2mat(model(i,1))))*inv(cell2mat(model(i,2)))*(bsxfun(@minus,testData(l,:),cell2mat(model(i,1))))');
+    
+    if(p_i < p)
+                
+        maxlab = i;
+        p_i = p;
+        
+    end
+    end
+    
+    classLabels(l,1) = maxlab;
 end
 
 % Complete the function

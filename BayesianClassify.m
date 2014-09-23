@@ -39,7 +39,7 @@ maxlab = 0;
     end
     end
     
-    classLabels(i,1) = maxlab;
+    classLabels(l,1) = maxlab;
 end
 
 % Complete the function

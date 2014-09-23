@@ -42,5 +42,8 @@ maxlab = 0;
     classLabels(i,1) = maxlab;
 end
 
+%build GET curves
+for(
+
 % Complete the function
 end

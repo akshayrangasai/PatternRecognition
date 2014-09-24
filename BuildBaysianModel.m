@@ -87,7 +87,7 @@ if(caseNumber == 3)
     varz = 0;
     
     for i = 1:k
-        varz = varz + (shape(class_matrices(:,:,i),1)-1)*varmat(1,i);
+        varz = varz + (size(class_matrices(:,:,i),1)-1)*varmat(1,i);
     end
     
     varz = varz/(m-k);
@@ -127,7 +127,7 @@ end
 
 
 for i = 1:k
-    model(i,1) = mat2cell(mean(class_matrices(:,:,i)));
+    model(i,1) = mat2cell(mean(class_matrices(1:counts(1,trainData(i,n+1))-1,:,i)));
     %determinants(i) = det(cov_matrices(:,:,i));
 end
 % Complete the function

@@ -1,14 +1,14 @@
+function plots 
 %%
-%function to plot decision boundaries for all cases for a given dataset
     %load data
     load 'ls_group3.mat';
-    trainData = ls_group3; 
+    trainData = ls_group3;
+    
     set(gcf,'Name','Decision Boundaries');
     %Build models for all cases
-    for j=4:5
+    for j=1:5
     model = BuildBaysianModel(trainData, 0, j);
     
- %%
     %Plot Decision Boundary
     W = cell(2,2);
     w = cell(2,1);

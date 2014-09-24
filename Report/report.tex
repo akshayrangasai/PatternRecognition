@@ -1,5 +1,6 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{graphicx}
+\usepackage{amssymb}
 
 \begin{document}
 
@@ -9,15 +10,15 @@
 
 \newpage
 
-\section{Introduction}
-For a dataset $x_i$ with classes $\omega_i$, 
+\section{Bayesian Classifiers}
+According to Bayes Theorem, for a dataset x with classes $\omega_i$, \\
 Probability of a datapoint belonging to class $\omega_i$ is defined as: \\
 \begin{equation}
 P(\omega_i | x) = \frac{(P(x|\omega_i)P((\omega_i))}{P(x)}
 \end{equation}
 \\ 
 
-\begin{enumerate}
+\begin{itemize}
 
 	\item Here, $P(x|\omega_i)$ is known as the class likelihood. 
 \\ To estimate this value, we require the distribution of $\omega_i$.
@@ -33,12 +34,28 @@ Based on the central limit theorem, we can assume that this would be Gaussian di
 	\begin{equation}
 	{P(x) = \sum_i P(x | \omega_i)P(\omega_i)}
 	\end{equation}
-\end{enumerate}
+\end{itemize}
 
+\section{Gaussian Likelihood Distribution}
+ 
+ For multi-dimensional data, the Gaussian Distribution is:   
+ \begin{equation}
+ P(x;\mu,\Sigma) = \frac{1}{2\pi^{k/2}|\Sigma|^{1/2}} e^{-(x-m)^{T} \Sigma^{-1} (x-m)}
+ \end{equation}
+ 
+ where
+ \begin{itemize}
+ 	\item $\mu$ is the mean 
+ 	\item $\Sigma$ is the covariance matrix
+ \end{itemize}
+ 
+ The above parameters are calculated for the following cases 
+
+ 
 \section{Bayes Classification}
 
 If $P(\omega_1 | x) > P(\omega_2 | x)$ then x belongs to class $\omega_1$
-If $P(\omega_1 | x) < P(\omega_2 | x)$ then x belongs to class $\omega_2$
+\\If $P(\omega_1 | x) < P(\omega_2 | x)$ then x belongs to class $\omega_2$\\
 
 Using equation (1), this can be written as:
  \begin{equation}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.19)  25 SEP 2014 20:10
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.19)  25 SEP 2014 23:59
 entering extended mode
 **report.tex
 
@@ -134,19 +134,54 @@ Underfull \hbox (badness 10000) in paragraph at lines 63--65
 
  []
 
-[2] [3] <Figures/ls_eig.png, id=26, 1028.34187pt x 490.83376pt>
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 71--72
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 73--74
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 75--78
+
+ []
+
+[3] <Figures/ls_eig.png, id=26, 1028.34187pt x 490.83376pt>
 File: Figures/ls_eig.png Graphic file (type png)
 
 <use Figures/ls_eig.png>
-Package pdftex.def Info: Figures/ls_eig.png used on input line 82.
+Package pdftex.def Info: Figures/ls_eig.png used on input line 91.
 (pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
 
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 82--83
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 91--92
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 77--84
+Underfull \hbox (badness 10000) in paragraph at lines 86--93
 
  []
 
@@ -154,10 +189,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 77--84
 File: Figures/NLS_eig.png Graphic file (type png)
 
 <use Figures/NLS_eig.png>
-Package pdftex.def Info: Figures/NLS_eig.png used on input line 88.
+Package pdftex.def Info: Figures/NLS_eig.png used on input line 97.
 (pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
 
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 88--89
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 97--98
  [][] 
  []
 
@@ -170,10 +205,10 @@ on/Assignment 2/PatternRecognition/Report/Figures/NLS_eig.png (PNG copy)>]
 File: Figures/OD_eig.png Graphic file (type png)
 
 <use Figures/OD_eig.png>
-Package pdftex.def Info: Figures/OD_eig.png used on input line 95.
+Package pdftex.def Info: Figures/OD_eig.png used on input line 104.
 (pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
 
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 95--96
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 104--105
  [][] 
  []
 
@@ -181,10 +216,10 @@ Overfull \hbox (57.27643pt too wide) in paragraph at lines 95--96
 File: Figures/RWD_eig.png Graphic file (type png)
 
 <use Figures/RWD_eig.png>
-Package pdftex.def Info: Figures/RWD_eig.png used on input line 101.
+Package pdftex.def Info: Figures/RWD_eig.png used on input line 110.
 (pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
 
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 101--102
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 110--111
  [][] 
  []
 
@@ -193,25 +228,25 @@ Overfull \hbox (57.27643pt too wide) in paragraph at lines 101--102
  <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition/R
 eport/Figures/OD_eig.png (PNG copy)> <C:/Users/user/Documents/Pattern Recogniti
 on/Assignment 2/PatternRecognition/Report/Figures/RWD_eig.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 107--108
+Underfull \hbox (badness 10000) in paragraph at lines 116--117
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 109--113
+Underfull \hbox (badness 10000) in paragraph at lines 118--122
 
  []
 
 <Figures/LS_DB.png, id=36, 578.16pt x 478.78876pt>
 File: Figures/LS_DB.png Graphic file (type png)
  <use Figures/LS_DB.png>
-Package pdftex.def Info: Figures/LS_DB.png used on input line 125.
+Package pdftex.def Info: Figures/LS_DB.png used on input line 134.
 (pdftex.def)             Requested size: 309.21991pt x 256.0748pt.
 
 <Figures/NLS_DB.png, id=37, 578.16pt x 478.78876pt>
 File: Figures/NLS_DB.png Graphic file (type png)
  <use Figures/NLS_DB.png>
-Package pdftex.def Info: Figures/NLS_DB.png used on input line 130.
+Package pdftex.def Info: Figures/NLS_DB.png used on input line 139.
 (pdftex.def)             Requested size: 309.21991pt x 256.0748pt.
 
 [6
@@ -221,30 +256,64 @@ eport/Figures/LS_DB.png (PNG copy)>]
 <Figures/OD_DB.png, id=42, 578.16pt x 478.78876pt>
 File: Figures/OD_DB.png Graphic file (type png)
  <use Figures/OD_DB.png>
-Package pdftex.def Info: Figures/OD_DB.png used on input line 135.
+Package pdftex.def Info: Figures/OD_DB.png used on input line 144.
 (pdftex.def)             Requested size: 309.21991pt x 256.0748pt.
 
 <Figures/RWD_DB.png, id=43, 578.16pt x 478.78876pt>
 File: Figures/RWD_DB.png Graphic file (type png)
  <use Figures/RWD_DB.png>
-Package pdftex.def Info: Figures/RWD_DB.png used on input line 140.
+Package pdftex.def Info: Figures/RWD_DB.png used on input line 149.
 (pdftex.def)             Requested size: 309.21991pt x 256.0748pt.
 
 [7 <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition
 /Report/Figures/NLS_DB.png (PNG copy)> <C:/Users/user/Documents/Pattern Recogni
 tion/Assignment 2/PatternRecognition/Report/Figures/OD_DB.png (PNG copy)>]
+<DET/1.png, id=48, 1028.34187pt x 490.83376pt>
+File: DET/1.png Graphic file (type png)
+ <use DET/1.png>
+Package pdftex.def Info: DET/1.png used on input line 157.
+(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
+
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 157--158
+ [][] 
+ []
+
+<DET/2.png, id=49, 1028.34187pt x 490.83376pt>
+File: DET/2.png Graphic file (type png)
+ <use DET/2.png>
+Package pdftex.def Info: DET/2.png used on input line 163.
+(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
+
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 163--164
+ [][] 
+ []
+
 [8 <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition
-/Report/Figures/RWD_DB.png (PNG copy)>]
+/Report/Figures/RWD_DB.png (PNG copy)> <C:/Users/user/Documents/Pattern Recogni
+tion/Assignment 2/PatternRecognition/Report/DET/1.png (PNG copy)>]
+<DET/3.png, id=53, 1028.34187pt x 490.83376pt>
+File: DET/3.png Graphic file (type png)
+ <use DET/3.png>
+Package pdftex.def Info: DET/3.png used on input line 169.
+(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
+
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 169--170
+ [][] 
+ []
+
+[9 <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition
+/Report/DET/2.png (PNG copy)> <C:/Users/user/Documents/Pattern Recognition/Assi
+gnment 2/PatternRecognition/Report/DET/3.png (PNG copy)>]
 ("C:\Users\user\Documents\Pattern Recognition\Assignment 2\PatternRecognition\R
 eport\report.aux") ) 
 Here is how much of TeX's memory you used:
- 1545 strings out of 493706
- 20308 string characters out of 3144586
+ 1561 strings out of 493706
+ 20492 string characters out of 3144586
  72810 words of memory out of 3000000
- 4872 multiletter control sequences out of 15000+200000
+ 4884 multiletter control sequences out of 15000+200000
  11352 words of font info for 43 fonts, out of 3000000 for 9000
  1025 hyphenation exceptions out of 8191
- 27i,6n,26p,238b,217s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 27i,6n,26p,238b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
 /cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.
 pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
@@ -260,9 +329,9 @@ ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fi
 les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTe
 X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fon
 ts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on report.pdf (8 pages, 316968 bytes).
+Output written on report.pdf (9 pages, 345120 bytes).
 PDF statistics:
- 101 PDF objects out of 1000 (max. 8388607)
+ 107 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 56 words of extra memory for PDF output out of 10000 (max. 10000000)
 

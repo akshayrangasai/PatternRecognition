@@ -68,7 +68,16 @@ Using equation (1), this can be written as:
  {P(x| \omega_1)P(\omega_1) \gtrless P(x | \omega_2)P(\omega_2)}
  \end{equation}
 
-This classification rules minimizes number of misclassifications. 
+ The value $x_0$ at which the RHS and LHS is called the threshold value. \\
+
+This classification rules minimizes number of misclassifications. \\ \\ 
+
+Based on this classification, the following quantities can be defined:\\ \\
+$True Positive Rate = \frac{\Sigma True Positive}{\Sigma Condition Positive}$ \\ \\ 
+$False Positive Rate = \frac{\Sigma False Positive}{\Sigma Condition Negative}$ \\ \\
+
+
+A plot of these two quantities is known as a DET Curve. 
 
 \clearpage
 \section{Experiments}
@@ -123,30 +132,49 @@ Cyan (line) - Decision Boundary b/2 Class 1 and 4
 
 \begin{figure}[H]
 	\includegraphics[height=9cm]{Figures/LS_DB.png}
-	\caption{Linearly Separable Data}
+	\caption{Decision Boundary for Dataset 1}
 \end{figure}
 
 \begin{figure}[H]
 	\includegraphics[height=9cm]{Figures/NLS_DB.png}
-	\caption{Non-linearly Separable Data}
+	\caption{Decision Boundary for Dataset 2}
 \end{figure}
 
 \begin{figure}[H]
 	\includegraphics[height=9cm]{Figures/OD_DB.png}
-	\caption{Overlapping Data}
+	\caption{Decision Boundary for Dataset 3}
 \end{figure}
 
 \begin{figure}[H]
 	\includegraphics[height=9cm]{Figures/RWD_DB.png}
-	\caption{Real World Data: Formant frequencies F1 and F2 for vowel utterances}
+	\caption{Decision Boundary for Dataset 4}
 \end{figure}
 
 
-\subsection{Confusion Matrices}
+\subsection{DET Curves}
+\begin{figure}[H]
+		\centering
+	\includegraphics[height=7cm]{DET/1.png}
+	\caption{DET Curves for Linearly Separable Data}
+\end{figure}
 
-\section{Cases}
+\begin{figure}[H]
+		\centering
+	\includegraphics[height=7cm]{DET/2.png}
+	\caption{DET Curves for Non-linearly Separable Data}
+\end{figure}
 
-\section{Conclusion}
-Write your conclusion here.
+\begin{figure}[H]
+		\centering
+	\includegraphics[height=7cm]{DET/3.png}
+	\caption{DET Curves for Overlapping Data}
+\end{figure}
+
+%\begin{figure}[H]
+%		\centering
+%	\includegraphics[height=7cm]{DET/4.png}
+%	\caption{DET Curves for Real World Data}
+% \end{figure}
+
 
 \end{document}

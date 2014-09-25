@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.26)  26 SEP 2014 03:42
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.26)  26 SEP 2014 03:54
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -356,7 +356,7 @@ py)>] [15] (./report.aux) )
 Here is how much of TeX's memory you used:
  1952 strings out of 494647
  23612 string characters out of 1173989
- 75862 words of memory out of 3000000
+ 77862 words of memory out of 3000000
  5145 multiletter control sequences out of 15000+50000
  11352 words of font info for 43 fonts, out of 3000000 for 9000
  297 hyphenation exceptions out of 8191
@@ -376,7 +376,7 @@ e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
 msfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
 msy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.p
 fb>
-Output written on report.pdf (15 pages, 426720 bytes).
+Output written on report.pdf (15 pages, 427947 bytes).
 PDF statistics:
  131 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

@@ -1,6 +1,6 @@
-    load 'ls_group3.mat';
-    trainData = [ls_group3(1:400,:); ls_group3(501:900,:); ls_group3(1001:1400,:); ls_group3(1501:1900,:)];
-    expData = [ls_group3(401:500,:); ls_group3(901:1000,:); ls_group3(1401:1500,:); ls_group3(1901:2000,:)];
+    load 'od_group3.mat';
+    trainData = [od_group3(1:400,:); od_group3(501:900,:); od_group3(1001:1400,:); od_group3(1501:1900,:)];
+    expData = [od_group3(401:500,:); od_group3(901:1000,:); od_group3(1401:1500,:); od_group3(1901:2000,:)];
     k = length(unique(trainData(:, end)));
     
     for z = 1:5

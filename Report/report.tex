@@ -204,7 +204,7 @@ Cyan (line) - Decision Boundary b/2 Class 1 and 4
 \section{Confusion Matrix}
 
 \subsection{Case 1}
-$$
+$$LS = 
 \begin{bmatrix}
 100   &  0 &    0 &    0 \\
 0  & 100   &  0   &  0 \\
@@ -212,9 +212,19 @@ $$
 0   &  0 &    0 &  100
 \end{bmatrix}
 $$
-
-\subsection{Case 2}
 $$
+OD = 
+\begin{bmatrix}
+
+ 	91 &    0 &    1 &    2 \\
+     0 &   92 &   13 &    1 \\
+     3 &    2 &   86 &    0 \\
+     6 &    6 &    0 &   97
+
+\end{bmatrix}
+$$
+\subsection{Case 2}
+$$LS = 
 \begin{bmatrix}
 71   &  0 &    0 &    0 \\
 10  & 100   &  0   &  0 \\
@@ -222,18 +232,33 @@ $$
 11   &  0 &    0 &  100
 \end{bmatrix}
 $$
-
-\subsection{Case 3}
-$$
+$$ OD = 
 \begin{bmatrix}
+	64 &    0 &    0 &    0 \\
+    12 &   95 &   13 &    4 \\
+    14 &    2 &   87 &    0 \\ 
+    10 &    3 &    0 &   96 
+\end{bmatrix}   
+$$
+\subsection{Case 3}
+$$LS = \begin{bmatrix}
 100   &  0 &    0 &    0 \\
 0  & 100   &  0   &  0 \\
 0   &  0 &  100  &   0 \\
 0   &  0 &    0 &  100
 \end{bmatrix}
+$$
+$$
+OD = 
+\begin{bmatrix}
+	86 &    0 &    1 &    2 \\
+     0 &   86 &   14 &    4 \\
+     6 &    7 &   85 &    0 \\
+     8 &    7 &    0 &   94
+\end{bmatrix} 	
 $$
 \subsection{Case 4}
-$$
+$$ LS = 
 \begin{bmatrix}
 100   &  0 &    0 &    0 \\
 0  & 100   &  0   &  0 \\
@@ -241,14 +266,32 @@ $$
 0   &  0 &    0 &  100
 \end{bmatrix}
 $$
+$$ OD = 
+\begin{bmatrix}
 
+ 	86 &    0 &     1  &   4 \\
+     0  &  87 &   14   &  2 \\
+     6   &  7 &   85   &  0 \\
+     8   &  6 &    0   & 94 \\
+\end{bmatrix}
+$$
 \subsection{case 5}
 $$
-\begin{bmatrix}
+LS = \begin{bmatrix}
 84   &  0 &    0 &    0 \\
 0  & 100   &  0   &  0 \\
 6   &  0 &  100  &   0 \\
 10   &  0 &    0 &  100
+\end{bmatrix}
+$$
+
+$$
+OD = \begin{bmatrix}
+	66  &   0 &    0 &     0 \\
+     2  &  89  &  14  &   4 \\
+    14   &  5   & 86   &  0 \\
+    18    & 6    & 0    & 96 
+
 \end{bmatrix}
 $$
 \end{document}

@@ -1,7 +1,7 @@
 %%
 
-    load 'RWD.mat';
-    trainData = RWD; 
+    load 'ls_group3.mat';
+    trainData = ls_group3; 
     m = size(trainData, 1); % number of training examples
     n = size(trainData, 2) - 1; % number of feature dimension
     k = length(unique(trainData(:, end))); % number of classes
@@ -21,6 +21,7 @@
     xmax = max(trainData(:,1));
     ymax = max(trainData(:,2));
  
+    clf;
     set(gcf,'Name','Decision Boundaries'); 
     whitebg('black');
     %Build models for all cases
@@ -30,6 +31,7 @@
     mean_1 = cell2mat(model(1,1));
     mean_2 = cell2mat(model(2,1));
     mean_3 = cell2mat(model(3,1));
+    mean_4 = cell2mat(model(4,1)); %delete for 3 class dataset
     
     %%
     %Plot Decision Boundary
@@ -44,11 +46,6 @@
     end
 
     subplot(3,2,j);
-    
-    for i=1:k
-        [
-        plot('cyan';
-    end
     
     plot([mean_1(1,1) mean_2(1,1)], [mean_1(1,2) mean_2(1,2)],'white');
     hold on
@@ -78,4 +75,12 @@
     setcurve ('color', 'magenta');
     hold on
 
+    %% delete for 3 class sets 
+    Wk = cell2mat(W(4)) - cell2mat(W(1));
+    wk = cell2mat(w(4)) - cell2mat(w(1));
+    wwk = ww(4) - ww(1);
+  
+    ezplot(@(x,y)decision(x,y,Wk,wk,wwk),[xmin, xmax, ymin, ymax]);
+    setcurve ('color', 'magenta');
+    hold on
 end

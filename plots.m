@@ -1,7 +1,7 @@
 %%
 
-    load 'data_NLS_firstfile.mat';
-    trainData = class_var; 
+    load 'od_group3.mat';
+    trainData = od_group3; 
     m = size(trainData, 1); % number of training examples
     n = size(trainData, 2) - 1; % number of feature dimension
     k = length(unique(trainData(:, end))); % number of classes
@@ -31,6 +31,7 @@
     mean_1 = cell2mat(model(1,1));
     mean_2 = cell2mat(model(2,1));
     mean_3 = cell2mat(model(3,1));
+    mean_4 = cell2mat(model(4,1)); %delete for 3 class dataset
     
     %%
     %Plot Decision Boundary
@@ -50,7 +51,9 @@
     hold on
     plot([mean_1(1,1) mean_3(1,1)], [mean_1(1,2) mean_3(1,2)],'white');
     hold on
-    
+    plot([mean_1(1,1) mean_4(1,1)], [mean_1(1,2) mean_4(1,2)],'white'); %delete for 3 class set
+    hold on
+
     
     colorchart = ['r' 'g' 'b' 'c'];
     for i=1:k
@@ -74,4 +77,12 @@
     setcurve ('color', 'magenta');
     hold on
 
+    %% delete for 3 class sets 
+    Wk = cell2mat(W(4)) - cell2mat(W(1));
+    wk = cell2mat(w(4)) - cell2mat(w(1));
+    wwk = ww(4) - ww(1);
+  
+    ezplot(@(x,y)decision(x,y,Wk,wk,wwk),[xmin, xmax, ymin, ymax]);
+    setcurve ('color', 'cyan');
+    hold on
 end

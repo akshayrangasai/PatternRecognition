@@ -1,14 +1,16 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2014.9.19)  25 SEP 2014 23:59
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.26)  26 SEP 2014 03:42
 entering extended mode
+ %&-line parsing enabled.
 **report.tex
-
-("C:\Users\user\Documents\Pattern Recognition\Assignment 2\PatternRecognition\R
-eport\report.tex"
-LaTeX2e <2014/05/01>
-Babel <3.9k> and hyphenation patterns for 68 languages loaded.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\article.cls"
+(./report.tex
+LaTeX2e <2009/09/24>
+Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
+yphenation, romanian, irish, coptic, serbian, turkish, welsh, esperanto, uppers
+orbian, estonian, indonesian, interlingua, icelandic, kurmanji, slovenian, uken
+glish, loaded.
+(/usr/share/texmf-texlive/tex/latex/base/article.cls
 Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\size11.clo"
+(/usr/share/texmf-texlive/tex/latex/base/size11.clo
 File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 )
 \c@part=\count79
@@ -23,50 +25,43 @@ File: size11.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphicx.sty"
-Package: graphicx 2014/04/25 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
+(/usr/share/texmf-texlive/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
-Package: keyval 2014/05/08 v1.15 key=value parser (DPC)
+(/usr/share/texmf-texlive/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \KV@toks@=\toks14
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\graphics.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/graphics.sty
 Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\graphics\trig.sty"
+(/usr/share/texmf-texlive/tex/latex/graphics/trig.sty
 Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\00miktex\graphics.cfg"
-File: graphics.cfg 2007/01/18 v1.5 graphics configuration of teTeX/TeXLive
+(/etc/texmf/tex/latex/config/graphics.cfg
+File: graphics.cfg 2009/08/28 v1.8 graphics configuration of TeX Live
 )
 Package graphics Info: Driver file: pdftex.def on input line 91.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\pdftex-def\pdftex.def"
-File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\infwarerr.sty"
-Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
-)
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\ltxcmds.sty"
-Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
-)
+(/usr/share/texmf-texlive/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2010/03/12 v0.04p Graphics/color for pdfTeX
 \Gread@gobject=\count87
 ))
 \Gin@req@height=\dimen103
 \Gin@req@width=\dimen104
 )
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amssymb.sty"
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amssymb.sty
+Package: amssymb 2009/06/22 v3.00
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\amsfonts.sty"
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
+(/usr/share/texmf-texlive/tex/latex/amsfonts/amsfonts.sty
+Package: amsfonts 2009/06/22 v3.00 Basic AMSFonts support
 \@emptytoks=\toks15
 \symAMSa=\mathgroup4
 \symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
+(Font)                  U/euf/m/n --> U/euf/b/n on input line 96.
 ))
-("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
+(/usr/share/texmf-texlive/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count88
 \float@exts=\toks16
@@ -74,264 +69,316 @@ Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \@float@everytoks=\toks17
 \@floatcapt=\box27
 )
-("C:\Users\user\Documents\Pattern Recognition\Assignment 2\PatternRecognition\R
-eport\report.aux")
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 7.
-LaTeX Font Info:    ... okay on input line 7.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2000/07/18 v2.13 AMS math features
+\@mathmargin=\skip43
 
-(C:\Users\user\AppData\Roaming\MiKTeX\2.9\tex\context\base\supp-pdf.mkii
+For additional information on amsmath, use the `?' option.
+(/usr/share/texmf-texlive/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks18
+\ex@=\dimen105
+))
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen106
+)
+(/usr/share/texmf-texlive/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count89
+LaTeX Info: Redefining \frac on input line 211.
+\uproot@=\count90
+\leftroot@=\count91
+LaTeX Info: Redefining \overline on input line 307.
+\classnum@=\count92
+\DOTSCASE@=\count93
+LaTeX Info: Redefining \ldots on input line 379.
+LaTeX Info: Redefining \dots on input line 382.
+LaTeX Info: Redefining \cdots on input line 467.
+\Mathstrutbox@=\box28
+\strutbox@=\box29
+\big@size=\dimen107
+LaTeX Font Info:    Redeclaring font encoding OML on input line 567.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
+\macc@depth=\count94
+\c@MaxMatrixCols=\count95
+\dotsspace@=\muskip10
+\c@parentequation=\count96
+\dspbrk@lvl=\count97
+\tag@help=\toks19
+\row@=\count98
+\column@=\count99
+\maxfields@=\count100
+\andhelp@=\toks20
+\eqnshift@=\dimen108
+\alignsep@=\dimen109
+\tagshift@=\dimen110
+\tagwidth@=\dimen111
+\totwidth@=\dimen112
+\lineht@=\dimen113
+\@envbody=\toks21
+\multlinegap=\skip44
+\multlinetaggap=\skip45
+\mathdisplay@stack=\toks22
+LaTeX Info: Redefining \[ on input line 2666.
+LaTeX Info: Redefining \] on input line 2667.
+) (./report.aux)
+\openout1 = `report.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
+LaTeX Font Info:    ... okay on input line 8.
+
+(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count89
-\scratchdimen=\dimen105
-\scratchbox=\box28
-\nofMPsegments=\count90
-\nofMParguments=\count91
-\everyMPshowfont=\toks18
-\MPscratchCnt=\count92
-\MPscratchDim=\dimen106
-\MPnumerator=\count93
-\makeMPintoPDFobject=\count94
-\everyMPtoPDFconversion=\toks19
+\scratchcounter=\count101
+\scratchdimen=\dimen114
+\scratchbox=\box30
+\nofMPsegments=\count102
+\nofMParguments=\count103
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count104
+\MPscratchDim=\dimen115
+\MPnumerator=\count105
+\everyMPtoPDFconversion=\toks24
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 11.
- ("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsa.fd"
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+LaTeX Font Info:    Try loading font information for U+msa on input line 12.
+ (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 11.
+LaTeX Font Info:    Try loading font information for U+msb on input line 12.
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\amsfonts\umsb.fd"
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+(/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
-{C:/Users/user/AppData/Local/MiKTeX/2.9/pdftex/config/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 16--18
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+Underfull \hbox (badness 10000) in paragraph at lines 17--19
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 20--22
+Underfull \hbox (badness 10000) in paragraph at lines 21--23
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 25.
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\omscmr.fd"
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 26.
+(/usr/share/texmf-texlive/tex/latex/base/omscmr.fd
 File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10.95> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 25.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
 
-Underfull \hbox (badness 10000) in paragraph at lines 63--65
-
- []
-
-[2]
-Underfull \hbox (badness 10000) in paragraph at lines 71--72
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 73--74
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--78
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--78
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--78
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 75--78
-
- []
-
-[3] <Figures/ls_eig.png, id=26, 1028.34187pt x 490.83376pt>
+<Figures/ls_eig.png, id=8, 1028.34187pt x 490.83376pt>
 File: Figures/ls_eig.png Graphic file (type png)
 
 <use Figures/ls_eig.png>
-Package pdftex.def Info: Figures/ls_eig.png used on input line 91.
-(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
-
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 91--92
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 62--63
  [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 86--93
+Underfull \hbox (badness 10000) in paragraph at lines 57--64
 
  []
 
-<Figures/NLS_eig.png, id=27, 1028.34187pt x 490.83376pt>
+[2] <Figures/NLS_eig.png, id=22, 1028.34187pt x 490.83376pt>
 File: Figures/NLS_eig.png Graphic file (type png)
 
 <use Figures/NLS_eig.png>
-Package pdftex.def Info: Figures/NLS_eig.png used on input line 97.
-(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 68--69
+ [][] 
+ []
 
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 97--98
+[3 <./Figures/ls_eig.png (PNG copy)> <./Figures/NLS_eig.png (PNG copy)>]
+<Figures/OD_eig.png, id=26, 1028.34187pt x 490.83376pt>
+File: Figures/OD_eig.png Graphic file (type png)
+
+<use Figures/OD_eig.png>
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 75--76
+ [][] 
+ []
+
+<Figures/RWD_eig.png, id=27, 1028.34187pt x 490.83376pt>
+File: Figures/RWD_eig.png Graphic file (type png)
+
+<use Figures/RWD_eig.png>
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 81--82
  [][] 
  []
 
 [4
 
- <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition/R
-eport/Figures/ls_eig.png (PNG copy)> <C:/Users/user/Documents/Pattern Recogniti
-on/Assignment 2/PatternRecognition/Report/Figures/NLS_eig.png (PNG copy)>]
-<Figures/OD_eig.png, id=31, 1028.34187pt x 490.83376pt>
-File: Figures/OD_eig.png Graphic file (type png)
+ <./Figures/OD_eig.png (PNG copy)> <./Figures/RWD_eig.png (PNG copy)>]
+<Figures/contour_1.png, id=31, 411.136pt x 308.352pt>
+File: Figures/contour_1.png Graphic file (type png)
 
-<use Figures/OD_eig.png>
-Package pdftex.def Info: Figures/OD_eig.png used on input line 104.
-(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
+<use Figures/contour_1.png>
+<Figures/contour_2.png, id=32, 411.939pt x 308.352pt>
+File: Figures/contour_2.png Graphic file (type png)
 
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 104--105
- [][] 
- []
+<use Figures/contour_2.png>
+<Figures/contour_3.png, id=33, 411.136pt x 308.352pt>
+File: Figures/contour_3.png Graphic file (type png)
 
-<Figures/RWD_eig.png, id=32, 1028.34187pt x 490.83376pt>
-File: Figures/RWD_eig.png Graphic file (type png)
+<use Figures/contour_3.png> [5
 
-<use Figures/RWD_eig.png>
-Package pdftex.def Info: Figures/RWD_eig.png used on input line 110.
-(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
+ <./Figures/contour_1.png (PNG copy)> <./Figures/contour_2.png (PNG copy)>]
+<Figures/contour_4.png, id=37, 411.136pt x 308.352pt>
+File: Figures/contour_4.png Graphic file (type png)
 
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 110--111
- [][] 
- []
+<use Figures/contour_4.png>
+<Figures/contour_5.png, id=38, 411.136pt x 308.352pt>
+File: Figures/contour_5.png Graphic file (type png)
 
-[5
-
- <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition/R
-eport/Figures/OD_eig.png (PNG copy)> <C:/Users/user/Documents/Pattern Recogniti
-on/Assignment 2/PatternRecognition/Report/Figures/RWD_eig.png (PNG copy)>]
-Underfull \hbox (badness 10000) in paragraph at lines 116--117
+<use Figures/contour_5.png> [6 <./Figures/contour_3.png (PNG copy)> <./Figures/
+contour_4.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 119--121
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 118--122
+Underfull \hbox (badness 10000) in paragraph at lines 127--128
 
  []
 
-<Figures/LS_DB.png, id=36, 578.16pt x 478.78876pt>
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 129--130
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--134
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 131--134
+
+ []
+
+[7 <./Figures/contour_5.png (PNG copy)>]
+Underfull \hbox (badness 10000) in paragraph at lines 142--143
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 144--148
+
+ []
+
+<Figures/LS_DB.png, id=48, 578.16pt x 478.78876pt>
 File: Figures/LS_DB.png Graphic file (type png)
  <use Figures/LS_DB.png>
-Package pdftex.def Info: Figures/LS_DB.png used on input line 134.
-(pdftex.def)             Requested size: 309.21991pt x 256.0748pt.
+Overfull \hbox (52.29616pt too wide) in paragraph at lines 160--161
+[][] 
+ []
 
-<Figures/NLS_DB.png, id=37, 578.16pt x 478.78876pt>
+[8
+
+] <Figures/NLS_DB.png, id=53, 578.16pt x 478.78876pt>
 File: Figures/NLS_DB.png Graphic file (type png)
- <use Figures/NLS_DB.png>
-Package pdftex.def Info: Figures/NLS_DB.png used on input line 139.
-(pdftex.def)             Requested size: 309.21991pt x 256.0748pt.
 
-[6
+<use Figures/NLS_DB.png>
+Overfull \hbox (52.29616pt too wide) in paragraph at lines 165--166
+[][] 
+ []
 
- <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition/R
-eport/Figures/LS_DB.png (PNG copy)>]
-<Figures/OD_DB.png, id=42, 578.16pt x 478.78876pt>
+[9 <./Figures/LS_DB.png (PNG copy)>]
+<Figures/OD_DB.png, id=57, 578.16pt x 478.78876pt>
 File: Figures/OD_DB.png Graphic file (type png)
  <use Figures/OD_DB.png>
-Package pdftex.def Info: Figures/OD_DB.png used on input line 144.
-(pdftex.def)             Requested size: 309.21991pt x 256.0748pt.
+Overfull \hbox (52.29616pt too wide) in paragraph at lines 170--171
+[][] 
+ []
 
-<Figures/RWD_DB.png, id=43, 578.16pt x 478.78876pt>
+[10 <./Figures/NLS_DB.png (PNG copy)>]
+<Figures/RWD_DB.png, id=61, 578.16pt x 478.78876pt>
 File: Figures/RWD_DB.png Graphic file (type png)
  <use Figures/RWD_DB.png>
-Package pdftex.def Info: Figures/RWD_DB.png used on input line 149.
-(pdftex.def)             Requested size: 309.21991pt x 256.0748pt.
+Overfull \hbox (52.29616pt too wide) in paragraph at lines 175--176
+[][] 
+ []
 
-[7 <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition
-/Report/Figures/NLS_DB.png (PNG copy)> <C:/Users/user/Documents/Pattern Recogni
-tion/Assignment 2/PatternRecognition/Report/Figures/OD_DB.png (PNG copy)>]
-<DET/1.png, id=48, 1028.34187pt x 490.83376pt>
+[11 <./Figures/OD_DB.png (PNG copy)>]
+<DET/1.png, id=65, 1028.34187pt x 490.83376pt>
 File: DET/1.png Graphic file (type png)
  <use DET/1.png>
-Package pdftex.def Info: DET/1.png used on input line 157.
-(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
-
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 157--158
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 183--184
  [][] 
  []
 
-<DET/2.png, id=49, 1028.34187pt x 490.83376pt>
+[12 <./Figures/RWD_DB.png (PNG copy)>]
+<DET/2.png, id=69, 1028.34187pt x 490.83376pt>
 File: DET/2.png Graphic file (type png)
  <use DET/2.png>
-Package pdftex.def Info: DET/2.png used on input line 163.
-(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
-
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 163--164
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 189--190
  [][] 
  []
 
-[8 <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition
-/Report/Figures/RWD_DB.png (PNG copy)> <C:/Users/user/Documents/Pattern Recogni
-tion/Assignment 2/PatternRecognition/Report/DET/1.png (PNG copy)>]
-<DET/3.png, id=53, 1028.34187pt x 490.83376pt>
+<DET/3.png, id=70, 1028.34187pt x 490.83376pt>
 File: DET/3.png Graphic file (type png)
  <use DET/3.png>
-Package pdftex.def Info: DET/3.png used on input line 169.
-(pdftex.def)             Requested size: 417.27643pt x 199.16928pt.
-
-Overfull \hbox (57.27643pt too wide) in paragraph at lines 169--170
+Overfull \hbox (57.27643pt too wide) in paragraph at lines 195--196
  [][] 
  []
 
-[9 <C:/Users/user/Documents/Pattern Recognition/Assignment 2/PatternRecognition
-/Report/DET/2.png (PNG copy)> <C:/Users/user/Documents/Pattern Recognition/Assi
-gnment 2/PatternRecognition/Report/DET/3.png (PNG copy)>]
-("C:\Users\user\Documents\Pattern Recognition\Assignment 2\PatternRecognition\R
-eport\report.aux") ) 
+[13 <./DET/1.png (PNG copy)> <./DET/2.png (PNG copy)>] [14 <./DET/3.png (PNG co
+py)>] [15] (./report.aux) ) 
 Here is how much of TeX's memory you used:
- 1561 strings out of 493706
- 20492 string characters out of 3144586
- 72810 words of memory out of 3000000
- 4884 multiletter control sequences out of 15000+200000
+ 1952 strings out of 494647
+ 23612 string characters out of 1173989
+ 75862 words of memory out of 3000000
+ 5145 multiletter control sequences out of 15000+50000
  11352 words of font info for 43 fonts, out of 3000000 for 9000
- 1025 hyphenation exceptions out of 8191
- 27i,6n,26p,238b,219s stack positions out of 5000i,500n,10000p,200000b,50000s
-<C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm
-/cmbx10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmbx12.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/
-Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program 
-Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Program Files/Mi
-KTeX 2.9/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Program Files/MiKTeX 2.9/
-fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX 2.9/fonts/typ
-e1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public
-/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts
-/cm/cmr17.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr6.
-pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Pr
-ogram Files/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Fi
-les/MiKTeX 2.9/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTe
-X 2.9/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Program Files/MiKTeX 2.9/fon
-ts/type1/public/amsfonts/symbols/msam10.pfb>
-Output written on report.pdf (9 pages, 345120 bytes).
+ 297 hyphenation exceptions out of 8191
+ 27i,7n,24p,280b,216s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmbx10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12
+.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf
+-texlive/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fo
+nts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texmf-texlive/fonts/type1/pu
+blic/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfont
+s/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.p
+fb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texmf-texl
+ive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/cm/cmsy6.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/c
+msy8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.p
+fb>
+Output written on report.pdf (15 pages, 426720 bytes).
 PDF statistics:
- 107 PDF objects out of 1000 (max. 8388607)
+ 131 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 56 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 

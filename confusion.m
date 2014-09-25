@@ -3,7 +3,8 @@
     expData = [ls_group3(401:500,:); ls_group3(901:1000,:); ls_group3(1401:1500,:); ls_group3(1901:2000,:)];
     k = length(unique(trainData(:, end)));
     
-    model = BuildBaysianModel(trainData,0,2); %change case here
+    for z = 1:5
+    model = BuildBaysianModel(trainData,0,z); %change case here
     expResults = BayesianClassify(model,expData(:,1:2));
     
     CM = zeros(k,k);
@@ -13,5 +14,6 @@
     end
     
     CM
+    end
         
     

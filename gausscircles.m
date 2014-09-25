@@ -1,5 +1,6 @@
-    load 'ls_group3.mat';
-    trainData = ls_group3; 
+    load 'data_NLS_firstfile.mat';
+
+    trainData = class_var; 
    
     m = size(trainData, 1); % number of training examples
     n = size(trainData, 2) - 1; % number of feature dimension
@@ -12,26 +13,28 @@
         counts(1,trainData(i,n+1)) = counts(1,trainData(i,n+1)) + 1;
     end
 
-    set(gcf,'Name','Decision Boundaries'); 
-    colorchart = ['r' 'g' 'b' 'c'];
+    %set(gcf,'Name','Decision Boundaries'); 
+    colorchart = ['r' 'g' 'b' 'c' 'k'];
 
     for i=1:5
        
-        subplot(3,2,j);
-     
+        %subplot(3,2,i);
+        figure
         for j=1:k
         scatter(class_matrices(1:counts(1,trainData(1,n+1))-1,1,j),class_matrices(1:counts(1,trainData(1,n+1))-1,2,j), 5 ,colorchart(j));
         hold on
         end
     
         model = BuildBaysianModel(trainData,0,i);
+        
         for j=1:k
-           for p= 0.2:1
-               ezplot(@(x1, x2)multigauss(x1,x2,k,cell2mat(model(i,1)),cell2mat(model(i,2)),p));
+           
+               ezcontour(@(x1, x2)multigauss(x1,x2,k,cell2mat(model(j,1)),cell2mat(model(j,2))),[-25 25 -25 25]);
                hold on;
-               setcurve ('color', 'cyan');
-               p = p+0.2;
-           end
+             
+               setcurve ('color', colorchart(j));
+               
+           
        end
     end
     

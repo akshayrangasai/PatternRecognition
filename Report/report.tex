@@ -2,6 +2,7 @@
 \usepackage{graphicx}
 \usepackage{amssymb}
 \usepackage{float}
+\usepackage{amsmath}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 \begin{document}
@@ -52,36 +53,6 @@ Based on the central limit theorem, we can assume that this would be Gaussian di
  \end{itemize}
  
  The above parameters are calculated for the following cases:
- \subsection{Bayes Classifier with Covariance same for all classes}
- \subsection{Bayes Classifier with Covariance different for all classes}
- \subsection{Naive Bayes Classifier with C = $\Sigma^2*I$}
- \subsection{Naive Bayes Classifier with C same for all classes}
- \subsection{Naive Bayes Classifier with C different for all classes} 
-
-\section{Bayes Classification}
-
-If $P(\omega_1 | x) > P(\omega_2 | x)$ then x belongs to class $\omega_1$
-\\If $P(\omega_1 | x) < P(\omega_2 | x)$ then x belongs to class $\omega_2$\\
-
-Using equation (1), this can be written as:
- \begin{equation}
- {P(x| \omega_1)P(\omega_1) \gtrless P(x | \omega_2)P(\omega_2)}
- \end{equation}
-
- The value $x_0$ at which the RHS and LHS is called the threshold value. \\
-
-This classification rules minimizes number of misclassifications. \\ \\ 
-
-Based on this classification, the following quantities can be defined:\\ \\
-$True Positive Rate = \frac{\Sigma True Positive}{\Sigma Condition Positive}$ \\ \\ 
-$False Positive Rate = \frac{\Sigma False Positive}{\Sigma Condition Negative}$ \\ \\
-
-
-A plot of these two quantities is known as a DET Curve. 
-
-\clearpage
-\section{Experiments}
-
 \subsection{Data}
 Red - Class 1, Green - Class 2, Blue - Class 3, Cyan - Class 4\\
 Black (solid) - 1st Eigenvector\\
@@ -112,6 +83,61 @@ Black (dashed) - 2nd Eigenvector\\
 \end{figure}
 
 \clearpage
+ \subsection{Bayes Classifier with Covariance same for all classes}
+\begin{figure}[H]
+		\centering
+\includegraphics[height=7cm]{Figures/contour_1.png}
+\end{figure}
+For a bayesian classifier with a common covariance matrix, we combine the matrices by taking the mean of all the class covariance matrices. Geometrically this will result in a linear rotation of the contours, while at the same time, scaling the axes of the contours. 
+ \subsection{Bayes Classifier with Covariance different for all classes}
+ \begin{figure}[H]
+		\centering
+\includegraphics[height=7cm]{Figures/contour_2.png}
+\end{figure}
+In this case, we take the class matrices and find out standard covariance to get the covariance matrix of each class. This acts as the C in our formula
+ \subsection{Naive Bayes Classifier with C = $\sigma^2*I$}
+ \begin{figure}[H]
+		\centering
+\includegraphics[height=7cm]{Figures/contour_3.png}
+\end{figure}
+To get one single value of $\sigma$, we use a weighted mean for all the features of each class and come up with a common $\sigma_iI$ matrix; We then take a weighted mean of these matrices to come up with one single $\sigma^2I$ matrix
+ \subsection{Naive Bayes Classifier with C same for all classes}
+  \begin{figure}[H]
+		\centering
+\includegraphics[height=7cm]{Figures/contour_4.png}
+\end{figure}
+We follow the same principle as the non-naive case, but with features being independent of each other, thus setting off diagonal elements to 0
+ \subsection{Naive Bayes Classifier with C different for all classes} 
+  \begin{figure}[H]
+		\centering
+\includegraphics[height=7cm]{Figures/contour_5.png}
+\end{figure}
+We follow the same principle as the non-naive case, but with features being independent of each other, thus setting off diagonal elements to 0
+
+\section{Bayes Classification}
+
+If $P(\omega_1 | x) > P(\omega_2 | x)$ then x belongs to class $\omega_1$
+\\If $P(\omega_1 | x) < P(\omega_2 | x)$ then x belongs to class $\omega_2$\\
+
+Using equation (1), this can be written as:
+ \begin{equation}
+ {P(x| \omega_1)P(\omega_1) \gtrless P(x | \omega_2)P(\omega_2)}
+ \end{equation}
+
+ The value $x_0$ at which the RHS and LHS is called the threshold value. \\
+
+This classification rules minimizes number of misclassifications. \\ \\ 
+
+Based on this classification, the following quantities can be defined:\\ \\
+$True Positive Rate = \frac{\Sigma True Positive}{\Sigma Condition Positive}$ \\ \\ 
+$False Positive Rate = \frac{\Sigma False Positive}{\Sigma Condition Negative}$ \\ \\
+
+
+A plot of these two quantities is known as a DET Curve. 
+
+\clearpage
+\section{Experiments}
+
 \subsection{Decision Boundaries}
 Following plots describe the decision boundaries for various datasets with different Bayesian classifiers. \\
 
@@ -131,22 +157,22 @@ Magenta - Decision Boundary b/w Class 1 and 3 \\
 Cyan (line) - Decision Boundary b/2 Class 1 and 4 
 
 \begin{figure}[H]
-	\includegraphics[height=9cm]{Figures/LS_DB.png}
+	\includegraphics[height=12cm]{Figures/LS_DB.png}
 	\caption{Decision Boundary for Dataset 1}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[height=9cm]{Figures/NLS_DB.png}
+	\includegraphics[height=12cm]{Figures/NLS_DB.png}
 	\caption{Decision Boundary for Dataset 2}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[height=9cm]{Figures/OD_DB.png}
+	\includegraphics[height=12cm]{Figures/OD_DB.png}
 	\caption{Decision Boundary for Dataset 3}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[height=9cm]{Figures/RWD_DB.png}
+	\includegraphics[height=12cm]{Figures/RWD_DB.png}
 	\caption{Decision Boundary for Dataset 4}
 \end{figure}
 
@@ -175,6 +201,54 @@ Cyan (line) - Decision Boundary b/2 Class 1 and 4
 %	\includegraphics[height=7cm]{DET/4.png}
 %	\caption{DET Curves for Real World Data}
 % \end{figure}
+\section{Confusion Matrix}
 
+\subsection{Case 1}
+$$
+\begin{bmatrix}
+100   &  0 &    0 &    0 \\
+0  & 100   &  0   &  0 \\
+0   &  0 &  100  &   0 \\
+0   &  0 &    0 &  100
+\end{bmatrix}
+$$
 
+\subsection{Case 2}
+$$
+\begin{bmatrix}
+71   &  0 &    0 &    0 \\
+10  & 100   &  0   &  0 \\
+8   &  0 &  100  &   0 \\
+11   &  0 &    0 &  100
+\end{bmatrix}
+$$
+
+\subsection{Case 3}
+$$
+\begin{bmatrix}
+100   &  0 &    0 &    0 \\
+0  & 100   &  0   &  0 \\
+0   &  0 &  100  &   0 \\
+0   &  0 &    0 &  100
+\end{bmatrix}
+$$
+\subsection{Case 4}
+$$
+\begin{bmatrix}
+100   &  0 &    0 &    0 \\
+0  & 100   &  0   &  0 \\
+0   &  0 &  100  &   0 \\
+0   &  0 &    0 &  100
+\end{bmatrix}
+$$
+
+\subsection{case 5}
+$$
+\begin{bmatrix}
+84   &  0 &    0 &    0 \\
+0  & 100   &  0   &  0 \\
+6   &  0 &  100  &   0 \\
+10   &  0 &    0 &  100
+\end{bmatrix}
+$$
 \end{document}

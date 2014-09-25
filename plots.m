@@ -85,4 +85,5 @@
     ezplot(@(x,y)decision(x,y,Wk,wk,wwk),[xmin, xmax, ymin, ymax]);
     setcurve ('color', 'cyan');
     hold on
+    print(gcf, 'decision_boundary_model1.png');
 end

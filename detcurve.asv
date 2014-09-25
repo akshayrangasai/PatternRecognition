@@ -53,7 +53,7 @@
  end
  
 
-    plot(roc(:,1),roc(:,2),'b-')
+    plot(roc(:,1),roc(:,2),'r-')
     hold on
     plot([0 roc(1000,1)],[0 roc(1000,2)],'r-')
     hold on

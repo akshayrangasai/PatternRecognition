@@ -37,7 +37,7 @@ function [model] = BuildBaysianModel(trainData, crossValidationData, caseNumber)
 %%
 m = size(trainData, 1); % number of training examples
 n = size(trainData, 2) - 1; % number of feature dimension
-k = length(unique(trainData(:, end))) % number of classes
+k = length(unique(trainData(:, end))); % number of classes
 classes = unique(trainData(:, end));
 model = cell(k, 2);
 class_matrices = zeros(m,n,k);
@@ -87,7 +87,7 @@ if(caseNumber == 3)
     varz = 0;
     
     for i = 1:k
-        varz = varz + (shape(class_matrices(:,:,i),1)-1)*varmat(1,i);
+        varz = varz + (size(class_matrices(:,:,i),1)-1)*varmat(1,i);
     end
     
     varz = varz/(m-k);
@@ -127,14 +127,9 @@ end
 
 
 for i = 1:k
-    model(i,1) = mat2cell(mean(class_matrices(:,:,i)));
+    model(i,1) = mat2cell(mean(class_matrices(1:counts(1,trainData(i,n+1))-1,:,i)));
     %determinants(i) = det(cov_matrices(:,:,i));
 end
-
-
-
-
-
 % Complete the function
 
 

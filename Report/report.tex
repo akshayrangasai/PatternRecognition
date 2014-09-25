@@ -1,6 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{graphicx}
 \usepackage{amssymb}
+\DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 \begin{document}
 
@@ -49,9 +50,13 @@ Based on the central limit theorem, we can assume that this would be Gaussian di
  	\item $\Sigma$ is the covariance matrix
  \end{itemize}
  
- The above parameters are calculated for the following cases 
+ The above parameters are calculated for the following cases:
+ \subsection{Bayes Classifier with Covariance same for all classes}
+ \subsection{Bayes Classifier with Covariance different for all classes}
+ \subsection{Naive Bayes Classifier with C = $\Sigma^2*I$}
+ \subsection{Naive Bayes Classifier with C same for all classes}
+ \subsection{Naive Bayes Classifier with C different for all classes} 
 
- 
 \section{Bayes Classification}
 
 If $P(\omega_1 | x) > P(\omega_2 | x)$ then x belongs to class $\omega_1$
@@ -63,6 +68,15 @@ Using equation (1), this can be written as:
  \end{equation}
 
 This classification rules minimizes number of misclassifications. 
+
+\section{Experiments}
+
+\subsection{Data}
+\begin{figure}[h!]
+\includegraphics[width=10cm]{ls_group3.png}
+\caption{Linearly Separable Data}
+\end{figure}
+
 \subsection{Parameters}
 \subsection{DET Curves}
 \subsection{Decision Boundaries}

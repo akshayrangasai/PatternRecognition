@@ -1,6 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{graphicx}
 \usepackage{amssymb}
+\usepackage{float}
 \DeclareGraphicsExtensions{.pdf,.png,.jpg}
 
 \begin{document}
@@ -41,7 +42,7 @@ Based on the central limit theorem, we can assume that this would be Gaussian di
  
  For multi-dimensional data, the Gaussian Distribution is:   
  \begin{equation}
- P(x;\mu,\Sigma) = \frac{1}{2\pi^{k/2}|\Sigma|^{1/2}} e^{-(x-m)^{T} \Sigma^{-1} (x-m)}
+ P(x;\mu,\Sigma) = \frac{1}{2\pi^{k/2}|\Sigma|^{1/2}} e^{-(x-\mu)^{T} \Sigma^{-1} (x-\mu)}
  \end{equation}
  
  where
@@ -69,29 +70,81 @@ Using equation (1), this can be written as:
 
 This classification rules minimizes number of misclassifications. 
 
+\clearpage
 \section{Experiments}
 
 \subsection{Data}
-\begin{figure}[h!]
-\includegraphics[width=10cm]{ls_group3.png}
+Red - Class 1, Green - Class 2, Blue - Class 3, Cyan - Class 4\\
+Black (solid) - 1st Eigenvector\\
+Black (dashed) - 2nd Eigenvector\\  
+\begin{figure}[H]
+		\centering
+\includegraphics[height=7cm]{Figures/ls_eig.png}
 \caption{Linearly Separable Data}
 \end{figure}
 
-\subsection{Parameters}
-\subsection{DET Curves}
+\begin{figure}[H]
+		\centering
+\includegraphics[height=7cm]{Figures/NLS_eig.png}
+\caption{Non-linearly Separable Data}
+\end{figure}
+
+\clearpage
+\begin{figure}[H]
+		\centering
+\includegraphics[height=7cm]{Figures/OD_eig.png}
+\caption{Overlapping Data}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+\includegraphics[height=7cm]{Figures/RWD_eig.png}
+\caption{Real World Data: Vowel utterance formant frequencies F1 and F2}
+\end{figure}
+
+\clearpage
 \subsection{Decision Boundaries}
+Following plots describe the decision boundaries for various datasets with different Bayesian classifiers. \\
+
+For every figure,\\
+\textbf{Row 1:} Bayes with: (L) Same covariance for all classes, (R) Different covariance for all classes\\
+\textbf{Row 2:\textbf{}} Naive Bayes with: (L) $C = \Sigma^2*I$, (R) Same C for all classes\\
+\textbf{Row 3:} Naive Bayes with different C for all classes\\
+
+\underline{\textbf{Legends:}}\\
+Red - Class 1\\
+Green - Class 2\\
+Blue - Class 3\\
+Cyan - Class 4\\
+White - $\mu_1 - \mu_2, \mu_3, \mu_4$\\
+Yellow - Decision Boundary b/w Class 1 and 2 \\
+Magenta - Decision Boundary b/w Class 1 and 3 \\
+Cyan (line) - Decision Boundary b/2 Class 1 and 4 
+
+\begin{figure}[H]
+	\includegraphics[height=9cm]{Figures/LS_DB.png}
+	\caption{Linearly Separable Data}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[height=9cm]{Figures/NLS_DB.png}
+	\caption{Non-linearly Separable Data}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[height=9cm]{Figures/OD_DB.png}
+	\caption{Overlapping Data}
+\end{figure}
+
+\begin{figure}[H]
+	\includegraphics[height=9cm]{Figures/RWD_DB.png}
+	\caption{Real World Data: Formant frequencies F1 and F2 for vowel utterances}
+\end{figure}
+
+
 \subsection{Confusion Matrices}
 
 \section{Cases}
-\subsection{Subsection Heading Here}
-Write your subsection text here.
-
-\begin{figure}
-    \centering
-  %  \includegraphics[width=3.0in]{myfigure}
-    \caption{Simulation Results}
-    \label{simulationfigure}
-\end{figure}
 
 \section{Conclusion}
 Write your conclusion here.

@@ -37,7 +37,7 @@ function [model] = BuildBaysianModel(trainData, crossValidationData, caseNumber)
 %%
 m = size(trainData, 1); % number of training examples
 n = size(trainData, 2) - 1; % number of feature dimension
-k = length(unique(trainData(:, end))) % number of classes
+k = length(unique(trainData(:, end))); % number of classes
 classes = unique(trainData(:, end));
 model = cell(k, 2);
 class_matrices = zeros(m,n,k);

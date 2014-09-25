@@ -1,6 +1,6 @@
-    load 'od_group3.mat';
-    trainData = [od_group3(1:400,:); od_group3(501:900,:); od_group3(1001:1400,:); od_group3(1501:1900,:)];
-    expData = [od_group3(401:500,:); od_group3(901:1000,:); od_group3(1401:1500,:); od_group3(1901:2000,:)];
+    load 'data_NLS_firstfile.mat';
+    trainData = [class_var(1:400,:); class_var(501:900,:); class_var(1001:1400,:)];%; class_var(1501:1900,:)];
+    expData = [class_var(401:500,:); class_var(901:1000,:); class_var(1401:1500,:)];%; class_var(1901:2000,:)];
     k = length(unique(trainData(:, end)));
     
     for z = 1:5
@@ -9,7 +9,7 @@
     
     CM = zeros(k,k);
     
-    for i=1:400
+    for i=1:300
         CM(expResults(i),expData(i,3)) = CM(expResults(i),expData(i,3)) + 1;
     end
     

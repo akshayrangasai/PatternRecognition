@@ -53,7 +53,7 @@ Based on the central limit theorem, we can assume that this would be Gaussian di
  \end{itemize}
  
  The above parameters are calculated for the following cases:
-\subsection{Data}
+\section{Data}
 Red - Class 1, Green - Class 2, Blue - Class 3, Cyan - Class 4\\
 Black (solid) - 1st Eigenvector\\
 Black (dashed) - 2nd Eigenvector\\  
@@ -126,13 +126,15 @@ Using equation (1), this can be written as:
 
  The value $x_0$ at which the RHS and LHS is called the threshold value. \\
 
-This classification rules minimizes number of misclassifications. \\ \\ 
+This classification rules minimizes number of misclassifications. \\
 
-Based on this classification, the following quantities can be defined:\\ \\
-$True Positive Rate = \frac{\Sigma True Positive}{\Sigma Condition Positive}$ \\ \\ 
-$False Positive Rate = \frac{\Sigma False Positive}{\Sigma Condition Negative}$ \\ \\
-
-
+Based on this classification, the following quantities can be defined:\\ 
+\begin{equation}
+True Positive Rate = \frac{\sum True Positive}{\sum Condition Positive} 
+\end{equation}
+\begin{equation}
+False Positive Rate = \frac{\sum False Positive}{\sum Condition Negative} 
+\end{equation}
 A plot of these two quantities is known as a DET Curve. 
 
 \clearpage
@@ -143,67 +145,48 @@ Following plots describe the decision boundaries for various datasets with diffe
 
 For every figure,\\
 \textbf{Row 1:} Bayes with: (L) Same covariance for all classes, (R) Different covariance for all classes\\
-\textbf{Row 2:\textbf{}} Naive Bayes with: (L) $C = \Sigma^2*I$, (R) Same C for all classes\\
+\textbf{Row 2:\textbf{}} Naive Bayes with: (L) $C = \sigma^2*I$, (R) Same C for all classes\\
 \textbf{Row 3:} Naive Bayes with different C for all classes\\
 
 \underline{\textbf{Legends:}}\\
-Red - Class 1\\
-Green - Class 2\\
-Blue - Class 3\\
-Cyan - Class 4\\
-White - $\mu_1 - \mu_2, \mu_3, \mu_4$\\
-Yellow - Decision Boundary b/w Class 1 and 2 \\
-Magenta - Decision Boundary b/w Class 1 and 3 \\
-Cyan (line) - Decision Boundary b/2 Class 1 and 4 
+\begin{tabular}{| l | l |}
+\hline 
+Red & Class 1 \\ \hline 
+Green & Class 2\\ \hline 
+Blue & Class 3\\ \hline 
+Cyan & Class 4\\ \hline 
+White & $\mu_1 - \mu_2, \mu_3, \mu_4$\\ \hline 
+Yellow & Decision Boundary b/w Class 1 and 2 \\ \hline 
+Magenta & Decision Boundary b/w Class 1 and 3 \\ \hline 
+Cyan (line) & Decision Boundary b/2 Class 1 and 4 \\
+\hline 
+\end{tabular}
 
 \begin{figure}[H]
-	\includegraphics[height=12cm]{Figures/LS_DB.png}
+	\includegraphics[height=14cm]{Figures/LS_DB.png}
 	\caption{Decision Boundary for Dataset 1}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[height=12cm]{Figures/NLS_DB.png}
+	\includegraphics[height=14cm]{Figures/NLS_DB.png}
 	\caption{Decision Boundary for Dataset 2}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[height=12cm]{Figures/OD_DB.png}
+	\includegraphics[height=14cm]{Figures/OD_DB.png}
 	\caption{Decision Boundary for Dataset 3}
 \end{figure}
 
 \begin{figure}[H]
-	\includegraphics[height=12cm]{Figures/RWD_DB.png}
+	\includegraphics[height=14cm]{Figures/RWD_DB.png}
 	\caption{Decision Boundary for Dataset 4}
 \end{figure}
 
 
-\subsection{DET Curves}
-\begin{figure}[H]
-		\centering
-	\includegraphics[height=7cm]{DET/1.png}
-	\caption{DET Curves for Linearly Separable Data}
-\end{figure}
-
-\begin{figure}[H]
-		\centering
-	\includegraphics[height=7cm]{DET/2.png}
-	\caption{DET Curves for Non-linearly Separable Data}
-\end{figure}
-
-\begin{figure}[H]
-		\centering
-	\includegraphics[height=7cm]{DET/3.png}
-	\caption{DET Curves for Overlapping Data}
-\end{figure}
-
-%\begin{figure}[H]
-%		\centering
-%	\includegraphics[height=7cm]{DET/4.png}
-%	\caption{DET Curves for Real World Data}
-% \end{figure}
+\clearpage
 \section{Confusion Matrix}
 
-\subsection{Case 1}
+\subsection{Bayes with same covariance for all classes}
 $$LS = 
 \begin{bmatrix}
 100   &  0 &    0 &    0 \\
@@ -212,6 +195,16 @@ $$LS =
 0   &  0 &    0 &  100
 \end{bmatrix}
 $$
+
+$$
+NLS = \begin{bmatrix}
+100  &   0 &   0  \\
+0 &  100  &  2 \\
+0   &  0   & 98  
+\end{bmatrix}
+$$
+
+
 $$
 OD = 
 \begin{bmatrix}
@@ -223,7 +216,7 @@ OD =
 
 \end{bmatrix}
 $$
-\subsection{Case 2}
+\subsection{Bayes with different covariance for all classes}
 $$LS = 
 \begin{bmatrix}
 71   &  0 &    0 &    0 \\
@@ -232,6 +225,16 @@ $$LS =
 11   &  0 &    0 &  100
 \end{bmatrix}
 $$
+
+$$
+NLS = \begin{bmatrix}
+100  &   0 &  1  \\
+0 &  100  &  1 \\
+0   &  0   & 98  
+\end{bmatrix}
+$$
+
+
 $$ OD = 
 \begin{bmatrix}
 	64 &    0 &    0 &    0 \\
@@ -240,7 +243,7 @@ $$ OD =
     10 &    3 &    0 &   96 
 \end{bmatrix}   
 $$
-\subsection{Case 3}
+\subsection{Naive Bayes with $C=\sigma^2*I$}
 $$LS = \begin{bmatrix}
 100   &  0 &    0 &    0 \\
 0  & 100   &  0   &  0 \\
@@ -248,6 +251,16 @@ $$LS = \begin{bmatrix}
 0   &  0 &    0 &  100
 \end{bmatrix}
 $$
+
+$$
+NLS = \begin{bmatrix}
+100  &   0 &   0  \\
+0 &  100  &  0  \\
+0   &  0   & 100  
+\end{bmatrix}
+$$
+
+
 $$
 OD = 
 \begin{bmatrix}
@@ -257,7 +270,7 @@ OD =
      8 &    7 &    0 &   94
 \end{bmatrix} 	
 $$
-\subsection{Case 4}
+\subsection{Naive Bayes with C same for all}
 $$ LS = 
 \begin{bmatrix}
 100   &  0 &    0 &    0 \\
@@ -266,6 +279,16 @@ $$ LS =
 0   &  0 &    0 &  100
 \end{bmatrix}
 $$
+
+$$
+NLS = \begin{bmatrix}
+100  &   0 &   0  \\
+0 &  100  &  0  \\
+0   &  0   & 100  
+\end{bmatrix}
+$$
+
+
 $$ OD = 
 \begin{bmatrix}
 
@@ -275,7 +298,7 @@ $$ OD =
      8   &  6 &    0   & 94 \\
 \end{bmatrix}
 $$
-\subsection{case 5}
+\subsection{Naive Bayes with C different for all}
 $$
 LS = \begin{bmatrix}
 84   &  0 &    0 &    0 \\
@@ -286,6 +309,15 @@ LS = \begin{bmatrix}
 $$
 
 $$
+NLS = \begin{bmatrix}
+95  &   0 &    1  \\
+5 &  100  &  3  \\
+0   &  0   & 96  
+\end{bmatrix}
+$$
+
+
+$$
 OD = \begin{bmatrix}
 	66  &   0 &    0 &     0 \\
      2  &  89  &  14  &   4 \\
@@ -294,4 +326,31 @@ OD = \begin{bmatrix}
 
 \end{bmatrix}
 $$
+\clearpage
+\section{DET Curves}
+
+DET Curves for Class 1. 
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{DET/1.png}
+	\caption{DET Curves for Linearly Separable Data}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{DET/2.png}
+	\caption{DET Curves for Non-linearly Separable Data}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[height=7cm]{DET/3.png}
+	\caption{DET Curves for Overlapping Data}
+\end{figure}
+
+%\begin{figure}[H]
+%		\centering
+%	\includegraphics[height=7cm]{DET/4.png}
+%	\caption{DET Curves for Real World Data}
+% \end{figure}
 \end{document}

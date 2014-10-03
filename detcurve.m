@@ -3,8 +3,8 @@
  %trainData = [class_var(1:400,:); class_var(501:900,:); class_var(1001:1400,:)];
  %expData = [class_var(401:500,:); class_var(901:1000,:); class_var(1401:1500,:)];
 
- %trainData = [od_group3(1:400,:); od_group3(501:900,:); od_group3(1001:1400,:);od_group3(1501:1900,:)];
- %expData = [od_group3(401:500,:); od_group3(901:1000,:); od_group3(1401:1500,:);od_group3(1901:2000,:)];
+ %trainData = [ls_group3(1:400,:); ls_group3(501:900,:); ls_group3(1001:1400,:);ls_group3(1501:1900,:)];
+ %expData = [ls_group3(401:500,:); ls_group3(901:1000,:); ls_group3(1401:1500,:);ls_group3(1901:2000,:)];
 
  
  trainData = [RWD(1:1000,:); RWD(2292:3291,:); RWD(4456:5455,:)];
@@ -48,18 +48,18 @@
      for i=1:m  
         CM(DETLabels(i,x),expData(i,3)) = CM(DETLabels(i,x),expData(i,3)) + 1;    
     end
-    roc(x,2) = CM(1,1)/sum(CM(:,1));
-    roc(x,1) = CM(1,2:k)/sum(CM(:,2:k));
+    roc(x,1) = log(CM(2,1)/sum(CM(:,1)));
+    roc(x,2) = log(CM(1,2:k)/sum(CM(:,2:k)));
  end
  
 
     plot(roc(:,1),roc(:,2),'b-')
     hold on
-    plot([0 roc(1000,1)],[0 roc(1000,2)],'r-')
-    hold on
-    plot([1 roc(1,1)],[1 roc(1,2)],'r-')
-    xlim([0,1])
-    ylim([0,1])
+    %plot([0 roc(1000,1)],[0 roc(1000,2)],'r-')
+    %hold on
+    %plot([1 roc(1,1)],[1 roc(1,2)],'r-')
+    %xlim([-100,100])
+    %ylim([-100,100])
     
  end
     

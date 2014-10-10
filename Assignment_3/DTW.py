@@ -52,5 +52,5 @@ class DTW:
 
 dttest = DTW()
 test = np.asarray([0, 0, 0, 0, 0, 1, 1, 1, 1, 1])
-temp = np.asarray([1, 0, 1, 0, 0, 1, 0, 1, 0, 1])
+temp = np.asarray([0,0,0, 1, 0, 1, 0, 0, 1, 0, 1, 0, 1])
 print dttest.getDistMat(test, temp)

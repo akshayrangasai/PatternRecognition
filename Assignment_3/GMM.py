@@ -1,5 +1,6 @@
 import numpy as np
 import random
+import scipy.stats
 
 class GMM:
 
@@ -63,18 +64,20 @@ class GMM:
 
 		converge = False
 
-
 		while not converge:
 			#E step
 			gamma = {}
-			
+			for x in trainData:
+				for i in keys:
+					gauss = multivariate_normal(self.centroids[i],self.covar[i])
+					p = mc[i] * 
+					try:
+						gamma[i].append(p)
+					except KeyError:
+						gamma[i] = [p]
+			#M step
+			for i in keys:
+				for x in trainData:
+					
 
-
-
-
-
-
-
-
-
-
+				

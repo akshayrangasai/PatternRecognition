@@ -4,7 +4,9 @@ import random
 class GMM:
 
 	def __init__(self):
-		self.model = None
+		self.centroids = None
+		self.covar = None
+		self.mc = None
 		self.nclusters = None
 
 	def initclusters(self, trainData, n_clusters):
@@ -13,7 +15,7 @@ class GMM:
 		mu = random.sample(trainData,n_clusters)
 		converge = False
 
-		while converge:
+		while not converge:
 			oldmu = mu
 			#cluster points
 			for x in trainData:
@@ -38,5 +40,41 @@ class GMM:
 			converge = set(tuple(a) for a in mu) == set(tuple(a) for a in oldmu)
 		return(mu, clusters) 		
 
-	def EMfit(self, trainData, mu, clusters):
-		while 
+	def fitGMM(self, trainData, mu, clusters, cov_type):
+		#Expectation Maximisation to fit GMM 
+		self.covar = []
+		mc = []
+		keys = sorted(clusters.keys())
+		
+		self.centroids = mu
+
+		if cov_type == 1: #full covariance matrix
+			for i in keys:
+				self.covar.append(np.cov(clusters[i],rowvar=0))
+		
+		else if cov_type == 2: #diagonal covariance matrix
+			for i in keys:
+				self.covar.append(np.cov(clusters[i], rowvar=0))
+			np.diag(np.diag(self.covar))
+
+		for i in keys:
+			mc.append(len(clusters[i]))
+		self.mc = [a / sum(mc) for a in mc]
+
+		converge = False
+
+
+		while not converge:
+			#E step
+			gamma = {}
+			
+
+
+
+
+
+
+
+
+
+

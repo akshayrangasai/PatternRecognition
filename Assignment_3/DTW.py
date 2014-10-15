@@ -1,5 +1,5 @@
 import numpy as np
-    
+import os    
 
 #def DTWminDist(mat, x,y,dist):
  
@@ -69,9 +69,21 @@ class DTW:
 
 
 dttest = DTW()
+path, dirs, files  = os.walk('Digits/digit_data/eight').next()
+totfiles = len(files)
+print totfiles
+DTWdistMat = np.zeros((1,totfiles))
+for k in range(0, 1):
+    for l in range(0,totfiles):
+        test = np.genfromtxt('Digits/digit_data/eight/%d.txt'%(l+1))
+        temp = np.genfromtxt('Digits/digit_data/eight/%d.txt'%(k+1))
+        DTWdistMat[k,l] = dttest.getDistMat(temp,test)[temp.shape[0]-1,test.shape[0]-1] 
+'''
 test = np.genfromtxt('Digits/digit_data/eight/1.txt')
-temp = np.genfromtxt('Digits/digit_data/eight/2.txt')
+temp = np.genfromtxt('Digits/digit_data/eight/1.txt')
 test2 = np.genfromtxt('Digits/digit_data/one/2.txt')
 
 #print temp[0,:]
 print dttest.getDistMat(temp,test)[temp.shape[0]-1,test.shape[0]-1], dttest.getDistMat(temp,test2)[temp.shape[0]-1,test2.shape[0]-1]
+'''
+print np.mean(DTWdistMat), np.std(DTWdistMat)

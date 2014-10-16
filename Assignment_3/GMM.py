@@ -61,5 +61,8 @@ class GMM(object):
 				sigma = sigma / Nk[i]
 
 				self.model_centers[i] = mu
-				self.model_covar[i] = sigma
+				if self.covar_type is "full":
+					self.model_covar[i] = sigma
+				elif self.covar_type is "diagonal":
+					self.model_covar[i] = np.diag(np.diag(sigma))
 				self.model_priors[i] = Nk[i] / np.sum(Nk)				

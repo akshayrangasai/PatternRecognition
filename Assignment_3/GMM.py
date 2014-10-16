@@ -1,80 +1,44 @@
 import numpy as np
 import random
-import scipy.stats
+from sklearn.cluster import KMeans
 
-class GMM:
+class GMM(object):
 
-	def __init__(self):
-		self.centroids = None
-		self.covar = None
-		self.mc = None
-		self.nclusters = None
+	def __init__(self, trainData, n_clusters, covar_type = "full"):
+		#Initialize values using K-Means
+		
+		self.n_clusters = n_clusters
+		self.covar_type = covar_type
 
-	def initclusters(self, trainData, n_clusters):
-		#use k-means to estimate intial cluster centres
-		oldmu = random.sample(trainData,n_clusters)
-		mu = random.sample(trainData,n_clusters)
-		converge = False
+		kmeans = KMeans(init = 'k-means++', n_clusters = n_clusters, n_jobs = -1)
+	
+		label = kmeans.fit_predict(trainData)
+		clusters = [[] for i in range(n_clusters)]
+		for (l,d) in zip(label,trainData):
+			clusters[l].append(d)
 
-		while not converge:
-			oldmu = mu
-			#cluster points
-			for x in trainData:
-				clusters = {}
-				min_dist = np.linalg.norm(x-mu[0])
-				min_key = 0
-				for i in enumerate(mu):
-					dist = np.linalg.norm(x-mu[i[0]])
-					if dist < min_dist:
-						min_dist = dist
-						min_key = i[0]
-				try:
-					clusters[min_key].append(x)
-				except KeyError:
-					clusters[min_key] = [x]
-			#calculate new centres
-			keys = sorted(clusters.keys())
-			mu = []
-			for i in keys:
-				mu.append(np.mean(clusters[i], axis = 0))
-			#check for convergence
-			converge = set(tuple(a) for a in mu) == set(tuple(a) for a in oldmu)
-		return(mu, clusters) 		
+		for cluster in clusters:
+			self.model_centers.append(np.mean(cluster, axis=0))
+			if covar_type is "full":
+				self.model_covar.append(np.cov(cluster, rowvar=0))
+			elif covar_type is "diagonal":
+				self.model_covar.append(np.diag(np.diag(np.cov(cluster, rowvar=0))))
+			self.model_priors.append(float(len(trainData)/len(cluster)))
 
-	def fitGMM(self, trainData, mu, clusters, cov_type):
+	def EMfit(self, trainData, n_iter):
 		#Expectation Maximisation to fit GMM 
-		self.covar = []
-		mc = []
-		keys = sorted(clusters.keys())
-		
-		self.centroids = mu
 
-		if cov_type == 1: #full covariance matrix
-			for i in keys:
-				self.covar.append(np.cov(clusters[i],rowvar=0))
-		
-		else if cov_type == 2: #diagonal covariance matrix
-			for i in keys:
-				self.covar.append(np.cov(clusters[i], rowvar=0))
-			np.diag(np.diag(self.covar))
-
-		for i in keys:
-			mc.append(len(clusters[i]))
-		self.mc = [a / sum(mc) for a in mc]
-
-		converge = False
-
-		while not converge:
+		for i in range(n_iter)
+			
 			#E step
-			gamma = {}
+			gamma = np.zeros(len(n_clusters),len(trainData))
+			
 			for x in trainData:
 				for i in keys:
 					gauss = multivariate_normal(self.centroids[i],self.covar[i])
-					p = mc[i] * 
-					try:
-						gamma[i].append(p)
-					except KeyError:
-						gamma[i] = [p]
+					p = mc[i] * (2* np.pi)^(-) *  
+					gamma[i,j] = 
+
 			#M step
 			for i in keys:
 				for x in trainData:

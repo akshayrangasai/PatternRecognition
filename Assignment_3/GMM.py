@@ -72,10 +72,13 @@ class GMM(object):
 					self.model_covar[i] = sigma
 				elif self.covar_type is "diagonal":
 					self.model_covar[i] = np.diag(np.diag(sigma))
-				self.model_priors[i] = Nk[i] / np.sum(Nk)				
+				self.model_priors[i] = Nk[i] / np.sum(Nk)
+			print self.model_centers				
 
 data = []
 for i in range(0,20):
 	data.append([i, math.pow(i,0.5)+7,math.pow(i,2)+3])
-GMMtest = GMM(data,2,"full")
+for i in range(60,80):
+	data.append([i,math.pow(i,0.5)+7, math.pow(i,2)+3])
+GMMtest = GMM(data,3,"full")
 GMMtest.EMfit(data,100)

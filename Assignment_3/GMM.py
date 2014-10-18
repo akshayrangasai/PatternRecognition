@@ -54,7 +54,7 @@ class GMM(object):
             print "E step"
             gamma = []
             for x in trainData: 
-                gamma.append(self.pdf(x)/np.sum(self.pdf(x,dim))) 
+                gamma.append(self.pdf(x)/np.sum(self.pdf(x))) 
 
             print "M step"  
             #M step
@@ -76,7 +76,7 @@ class GMM(object):
                 elif self.covar_type is "diagonal":
                     self.model_covar[i] = np.diag(np.diag(sigma))
                 self.model_priors[i] = Nk[i] / np.sum(Nk)
-            print self.model_centers
+            #print self.model_centers
 
 #data = []
 #for i in range(0,20):
@@ -97,9 +97,10 @@ elementlist = []
 for k, v in datadict.iteritems():
     for _v in v:
         #print _v
-        elementlist.append(list(chain.from_iterable(np.genfromtxt(rootpath +'/' + dirs[k] +'/' +_v).tolist())))
-trainingset = np.asarray(elementlist)
-print trainingset.shape[1]
+        #elementlist.append(list(chain.from_iterable(np.genfromtxt(rootpath +'/' + dirs[k] +'/' +_v).tolist())))
+        elementlist.append(np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v))
+trainingset = np.concatenate(elementlist)
+print trainingset.shape
 GMMtest = GMM(trainingset ,3,"full")
 GMMtest.EMfit(trainingset,20)
 

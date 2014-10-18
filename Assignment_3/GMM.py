@@ -36,10 +36,13 @@ class GMM(object):
         #Calculate probability of data in each component and return
         prob = []
         for i in range(self.n_clusters):
-            covar = np.matrix(self.model_covar[i])
-            k = (1.0/float(math.pow((2*math.pi), float(dim)/2))) * math.pow(np.linalg.det(covar),0.5)
             x_mu = np.matrix(data - self.model_centers[i])
-            p = self.model_priors[i] * k * math.pow(math.e, -0.5 * (x_mu * covar.I * x_mu.T))
+            covar = np.matrix(self.model_covar[i])
+            A = np.linalg.inv(covar)
+            det = np.fabs(np.linalg.det(covar))
+            k = (2.0*np.pi)**(dim/2.0) * (det)**(0.5)
+    
+            p = self.model_priors[i] * np.exp(-0.5 * x_mu * A * x_mu.T) / k
             prob.append(p)
         #print prob
         return prob
@@ -52,12 +55,16 @@ class GMM(object):
         for k in range(n_iter):         
         
             #E step
-            print "E step"
+            print "Iter ", k
             gamma = []
-            for x in trainData: 
-                gamma.append(self.pdf(x)/np.sum(self.pdf(x))) 
+            for x in trainData:
+                if np.sum(self.pdf(x)) != 0.0:
+                    gamma.append(self.pdf(x)/np.sum(self.pdf(x)))
+                else:
+                    print "NaN/infi avoided" 
+                    prob = [[[1.0/self.n_clusters]] for i in range(self.n_clusters)]
+                    gamma.append(prob)
 
-            print "M step"  
             #M step
             Gamma = np.array(gamma)
             Nk = np.sum(Gamma,axis=0)
@@ -77,7 +84,9 @@ class GMM(object):
                 elif self.covar_type is "diagonal":
                     self.model_covar[i] = np.diag(np.diag(sigma))
                 self.model_priors[i] = Nk[i] / np.sum(Nk)
-            #print self.model_centers
+            #print "Centeres", self.model_centers
+            #print "Covariance", self.model_covar
+            print "Prior", self.model_priors
 
 #data = []
 #for i in range(0,20):

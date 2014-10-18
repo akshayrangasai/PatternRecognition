@@ -37,7 +37,7 @@ class GMM(object):
         prob = []
         for i in range(self.n_clusters):
             covar = np.matrix(self.model_covar[i])
-            k = (1.0/float(math.pow((2*math.pi), float(dim)/2))) * math.pow(np.linalg.det(covar),0.5)
+            k = math.pow(1.0/float(2*math.pi), float(dim)/2) * math.pow(np.linalg.det(covar),0.5)
             x_mu = np.matrix(data - self.model_centers[i])
             p = self.model_priors[i] * k * math.pow(math.e, -0.5 * (x_mu * covar.I * x_mu.T))
             prob.append(p)
@@ -53,8 +53,8 @@ class GMM(object):
             #E step
             print "E step"
             gamma = []
-            for x in trainData: 
-                gamma.append(self.pdf(x)/np.sum(self.pdf(x,dim))) 
+            for x in trainData:
+                gamma.append(self.pdf(x)/np.sum(self.pdf(x))) 
 
             print "M step"  
             #M step

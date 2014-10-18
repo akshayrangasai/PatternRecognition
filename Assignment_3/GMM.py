@@ -41,6 +41,7 @@ class GMM(object):
             x_mu = np.matrix(data - self.model_centers[i])
             p = self.model_priors[i] * k * math.pow(math.e, -0.5 * (x_mu * covar.I * x_mu.T))
             prob.append(p)
+        #print prob
         return prob
 
     def EMfit(self, trainData, n_iter = 100):

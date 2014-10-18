@@ -2,6 +2,7 @@ import numpy as np
 import math,os
 from sklearn.cluster import KMeans
 from itertools import chain
+import matplotlib.pyplot as plt
 
 class GMM(object):
 
@@ -14,6 +15,7 @@ class GMM(object):
         self.model_centers = []
         self.model_covar = []
         self.model_priors = []
+        self.loglik = []
 
         kmeans = KMeans(init = 'k-means++', n_clusters = n_clusters, n_jobs = -1)
     
@@ -85,7 +87,16 @@ class GMM(object):
                 self.model_priors[i] = Nk[i] / np.sum(Nk)
             #print "Centeres", self.model_centers
             #print "Covariance", self.model_covar
-            print "Prior", self.model_priors
+            #print "Prior", self.model_priors
+            #Log Likelihood
+            ll = 0
+            for x in trainData:
+                ll += np.log(np.sum(self.pdf(x)))
+            self.loglik.append(ll)
+
+    def loglikelihood(self):
+        return self.loglik
+
 
 #data = []
 #for i in range(0,20):
@@ -111,5 +122,7 @@ for k, v in datadict.iteritems():
 trainingset = np.concatenate(elementlist)
 print trainingset.shape
 GMMtest = GMM(trainingset ,3,"full")
-GMMtest.EMfit(trainingset,20)
-
+GMMtest.EMfit(trainingset, 20)
+print GMMtest.loglikelihood()
+plt.plot(GMMtest.loglikelihood())
+plt.show()

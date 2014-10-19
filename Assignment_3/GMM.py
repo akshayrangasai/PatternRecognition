@@ -32,7 +32,7 @@ class GMM(object):
                 self.model_covar.append(np.diag(np.diag(np.cov(cluster, rowvar=0))))
             self.model_priors.append(float(len(cluster))/float(len(trainData)))
 
-    def pdf(self, data, mode=0):
+    def pdf(self, data):
         #print data.shape
         dim = data.shape[0]
         #Calculate probability of data in each component and return
@@ -43,11 +43,9 @@ class GMM(object):
             A = np.linalg.inv(covar)
             det = np.fabs(np.linalg.det(covar))
             k = (2.0*np.pi)**(dim/2.0) * (det)**(0.5)
-            expp = -0.5 * x_mu * A * x_mu.T
-            if expp >= -745:
-                p = self.model_priors[i] * np.exp(expp) / k
-            else: 
-                p = self.model_priors[i] * np.exp(-745) / k
+            p = self.model_priors[i] * np.exp(float(-0.5 * x_mu * A * x_mu.T)) / k
+            if p == 0:
+                p = np.exp(-745)
             prob.append(p)
 
         return prob
@@ -67,6 +65,7 @@ class GMM(object):
                 
             #M step
             Gamma = np.array(gamma)
+            #print np.shape(Gamma)
             Nk = np.sum(Gamma,axis=0)
             for i in range(self.n_clusters):
                 mu = (1.0/Nk[i]) * np.dot(Gamma[:,i].T,data)

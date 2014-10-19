@@ -32,7 +32,7 @@ class GMM(object):
                 self.model_covar.append(np.diag(np.diag(np.cov(cluster, rowvar=0))))
             self.model_priors.append(float(len(cluster))/float(len(trainData)))
 
-    def pdf(self, data):
+    def pdf(self, data, mode=0):
         #print data.shape
         dim = data.shape[0]
         #Calculate probability of data in each component and return
@@ -43,9 +43,13 @@ class GMM(object):
             A = np.linalg.inv(covar)
             det = np.fabs(np.linalg.det(covar))
             k = (2.0*np.pi)**(dim/2.0) * (det)**(0.5)
-    
-            p = self.model_priors[i] * np.exp(-0.5 * x_mu * A * x_mu.T) / k
+            expp = -0.5 * x_mu * A * x_mu.T
+            if expp >= -745:
+                p = self.model_priors[i] * np.exp(expp) / k
+            else: 
+                p = self.model_priors[i] * np.exp(-745) / k
             prob.append(p)
+
         return prob
 
     def EMfit(self, trainData, n_iter = 100):
@@ -59,13 +63,8 @@ class GMM(object):
             print "Iter ", k
             gamma = []
             for x in trainData:
-                if np.sum(self.pdf(x)) != 0.0:
-                    gamma.append(self.pdf(x)/np.sum(self.pdf(x)))
-                else:
-                    print "NaN/infi avoided" 
-                    prob = [[[1.0/self.n_clusters]] for i in range(self.n_clusters)]
-                    gamma.append(prob)
-
+                gamma.append(self.pdf(x)/np.sum(self.pdf(x)))
+                
             #M step
             Gamma = np.array(gamma)
             Nk = np.sum(Gamma,axis=0)
@@ -125,4 +124,6 @@ GMMtest = GMM(trainingset ,3,"full")
 GMMtest.EMfit(trainingset, 20)
 print GMMtest.loglikelihood()
 plt.plot(GMMtest.loglikelihood())
+plt.xlabel('Number of iterations')
+plt.ylabel('Log Likelihood')
 plt.show()

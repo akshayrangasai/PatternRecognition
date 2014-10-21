@@ -34,7 +34,7 @@ class GMM(object):
 
     def pdf(self, data):
         #print data.shape
-        dim = data.shape[0]
+        dim = np.shape(data)[0]
         #Calculate probability of data in each component and return
         prob = []
         for i in range(self.n_clusters):
@@ -53,7 +53,8 @@ class GMM(object):
     def EMfit(self, trainData, n_iter = 100):
         #Expectation Maximisation to fit GMM 
         (N,dim) = np.shape(trainData)
-        data = trainData
+        data = np.array(trainData)
+        ll = np.exp(-700) #large negative initial value for init
     
         for k in range(n_iter):         
         
@@ -87,42 +88,87 @@ class GMM(object):
             #print "Covariance", self.model_covar
             #print "Prior", self.model_priors
             #Log Likelihood
+            old_ll = ll
             ll = 0
             for x in trainData:
                 ll += np.log(np.sum(self.pdf(x)))
             self.loglik.append(ll)
 
-    def loglikelihood(self):
-        return self.loglik
+            #if old_ll > ll:
+            #    break
 
+    def plotloglikelihood(self):
+        plt.plot(self.loglik)
+        plt.xlabel('Number of iterations')
+        plt.ylabel('Log Likelihood')
+        plt.show()
 
-#data = []
-#for i in range(0,20):
-#    data.append([i, math.pow(i,0.5)+7,math.pow(i,2)+3])
-#for i in range(60,80):
-#    data.append([i,math.pow(i,0.5)+7, math.pow(i,2)+3])
-#GMMtest = GMM(data,3,"full")
-#GMMtest.EMfit(data,100)
+    def saveloglikelihood(self, filename):
+        plt.plot(self.loglik)
+        plt.xlabel('Number of iterations')
+        plt.ylabel('Log Likelihood')
+        plt.savefig(filename+'.png')
+
+    def predict(self, testData):
+        y = []
+        
+        for x in testData:
+            y.append(self.pdf(x))
+
+        return y
+
 rootpath = 'GMM/features'
 path, dirs, files  = os.walk(rootpath).next()
 datadict = dict()
+trdict, testdict = dict(), dict()
 labels = enumerate(dirs)
 for di in range(0,len(dirs)):
     f = os.listdir(rootpath+ '/'+ dirs[di])
     datadict[di] = f
 
-elementlist = []
-for k, v in datadict.iteritems():
+for di in range(0,len(dirs)):
+    np.random.shuffle(datadict[di])
+    tr_idx = 0.8*np.shape(datadict[di])[0]
+    trdict[di], testdict[di] = datadict[di][:int(tr_idx)], datadict[di][int(tr_idx):]
+
+datasample = np.genfromtxt(rootpath+'/'+dirs[0]+'/'+datadict[0][0])
+(m,n) = np.shape(datasample)
+
+trainingset = [[] for i in range(m)]
+for k, v in trdict.iteritems():
     for _v in v:
         #print _v
         #elementlist.append(list(chain.from_iterable(np.genfromtxt(rootpath +'/' + dirs[k] +'/' +_v).tolist())))
-        elementlist.append(np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v))
-trainingset = np.concatenate(elementlist)
-print trainingset.shape
-GMMtest = GMM(trainingset ,3,"full")
-GMMtest.EMfit(trainingset, 20)
-print GMMtest.loglikelihood()
-plt.plot(GMMtest.loglikelihood())
-plt.xlabel('Number of iterations')
-plt.ylabel('Log Likelihood')
-plt.show()
+        data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
+        for i in range(m):
+            trainingset[i].append(data[i].tolist())
+
+#print np.shape(elementlist)
+#trainingset = np.concatenate(elementlist)
+#print trainingset.shape
+#GMMtest = GMM(trainingset ,3,"full")
+#GMMtest.EMfit(trainingset, 100)
+#GMMtest.plotloglikelihood()
+GMMs = []
+
+for i in range(m):
+    GMMs.append(GMM(trainingset[i],3, "full"))
+    GMMs[i].EMfit(trainingset[i], 20)
+    #GMMs[i].saveloglikelihood('likelihood'+str(i))
+
+testset = [[] for i in range(m)]
+testtruth = [[] for i in range(m)]
+for k, v in testdict.iteritems():
+    for _v in v:
+        #print _v
+        #elementlist.append(list(chain.from_iterable(np.genfromtxt(rootpath +'/' + dirs[k] +'/' +_v).tolist())))
+        data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
+        for i in range(m):
+            testset[i].append(data[i].tolist())
+            testtruth[i].append(k)
+
+
+
+
+
+

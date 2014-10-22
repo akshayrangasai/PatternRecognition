@@ -1,6 +1,6 @@
 import numpy as np
 import os    
-
+import matplotlib.pyplot as plt
 #def DTWminDist(mat, x,y,dist):
  
 
@@ -86,4 +86,11 @@ test2 = np.genfromtxt('Digits/digit_data/one/2.txt')
 #print temp[0,:]
 print dttest.getDistMat(temp,test)[temp.shape[0]-1,test.shape[0]-1], dttest.getDistMat(temp,test2)[temp.shape[0]-1,test2.shape[0]-1]
 '''
-print np.mean(DTWdistMat), np.std(DTWdistMat)
+histmat, bins = np.histogram((DTWdistMat),bins = 100)
+center = (bins[:-1]- bins[1:])/2 
+width = 0.7*(bins[1]-bins[0])
+plt.bar(center,histmat,align = 'center', width = width)
+#plt.hist(histmat)
+plt.plot(DTWdistMat)
+plt.show()
+#print histmat

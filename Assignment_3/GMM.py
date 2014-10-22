@@ -49,6 +49,10 @@ class GMM(object):
                 p = np.exp(-745)
             prob.append(p)
 
+        #print prob
+
+
+
         return prob
 
     def EMfit(self, trainData, n_iter = 100):

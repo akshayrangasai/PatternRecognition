@@ -16,6 +16,7 @@ class GMM(object):
         self.model_covar = []
         self.model_priors = []
         self.loglik = []
+        self.classclust = np.zeros(n_clusters)
 
         kmeans = KMeans(init = 'k-means++', n_clusters = n_clusters, n_jobs = -1)
     
@@ -109,13 +110,31 @@ class GMM(object):
         plt.ylabel('Log Likelihood')
         plt.savefig(filename+'.png')
 
-    def predict(self, testData):
+    def classcluster(self, classData, class_no):
+        #call separately with data of all classes
+        y = []
+        for x in classData:
+            y.append(self.pdf(x)/np.sum(self.pdf(x)))
+
+        totes = np.sum(y,axis=0)
+        print totes
+        idx = totes.tolist().index(np.max(totes))
+        self.classclust[idx] = class_no
+
+        print self.classclust
+
+    def predict_class(self,testData):
         y = []
         
         for x in testData:
-            y.append(self.pdf(x))
+            y.append(self.pdf(x)/np.sum(self.pdf(x)))
 
-        return y
+        p = np.zeros((np.shape(y)))
+
+        for idx in range(self.n_clusters):
+            p[:,self.classcluster[idx]] = np.array(y)[:,idx] 
+
+        return np.array(p)
 
 rootpath = 'GMM/features'
 path, dirs, files  = os.walk(rootpath).next()
@@ -133,42 +152,45 @@ for di in range(0,len(dirs)):
 
 datasample = np.genfromtxt(rootpath+'/'+dirs[0]+'/'+datadict[0][0])
 (m,n) = np.shape(datasample)
-
+m = 1
 trainingset = [[] for i in range(m)]
+classdata = []
 for k, v in trdict.iteritems():
+    classset = [[] for i in range(m)]
     for _v in v:
-        #print _v
-        #elementlist.append(list(chain.from_iterable(np.genfromtxt(rootpath +'/' + dirs[k] +'/' +_v).tolist())))
         data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
         for i in range(m):
             trainingset[i].append(data[i].tolist())
+            classset[i].append(data[i].tolist())
+    classdata.append(np.array(classset))
 
-#print np.shape(elementlist)
-#trainingset = np.concatenate(elementlist)
-#print trainingset.shape
-#GMMtest = GMM(trainingset ,3,"full")
-#GMMtest.EMfit(trainingset, 100)
-#GMMtest.plotloglikelihood()
 GMMs = []
-
 for i in range(m):
-    GMMs.append(GMM(trainingset[i],3, "full"))
-    GMMs[i].EMfit(trainingset[i], 20)
+    print "GMM #", i
+    GMMs.append(GMM(trainingset[i], len(dirs), "full"))
+    GMMs[i].EMfit(trainingset[i], 2)
     #GMMs[i].saveloglikelihood('likelihood'+str(i))
+    for j in range(len(dirs)):
+        GMMs[i].classcluster(classdata[j][i],j)
+    print GMMs[i].classclust
 
 testset = [[] for i in range(m)]
-testtruth = [[] for i in range(m)]
-for k, v in testdict.iteritems():
-    for _v in v:
-        #print _v
-        #elementlist.append(list(chain.from_iterable(np.genfromtxt(rootpath +'/' + dirs[k] +'/' +_v).tolist())))
-        data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
-        for i in range(m):
-            testset[i].append(data[i].tolist())
-            testtruth[i].append(k)
+#testtruth = [[] for i in range(m)]
+#for k, v in testdict.iteritems():
+for _v in testdict[1]:
+    print _v
+    #elementlist.append(list(chain.from_iterable(np.genfromtxt(rootpath +'/' + dirs[k] +'/' +_v).tolist())))
+    data = np.genfromtxt(rootpath+'/'+dirs[1]+'/'+_v)
+    for i in range(m):
+        testset[i].append(data[i].tolist())
+        #testtruth[i].append(k)
 
-
-
-
+pred = np.zeros((np.shape(testset)[1],3))
+for i in range(m):
+    p = GMMs[i].predict_class(testset[i])
+    pred += [a/np.sum(a) for a in p]
+    print "GMM probability", [a/np.sum(a) for a in p]
+    
+print "Sum", pred
 
 

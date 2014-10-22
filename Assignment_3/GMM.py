@@ -118,7 +118,7 @@ class GMM(object):
         #call separately with data of all classes
         y = []
         for x in classData:
-            y.append(self.pdf(x)/np.sum(self.pdf(x)))
+            y.append(self.pdf(x))
 
         totes = np.sum(y,axis=0)
         print totes
@@ -135,7 +135,7 @@ class GMM(object):
 
         p = np.zeros((np.shape(y)))
 
-        for idx in range(self.n_clusters):
+        for idx in range(self.n_clusters):=
             p[:,self.classcluster[idx]] = np.array(y)[:,idx] 
 
         return np.array(p)
@@ -157,26 +157,28 @@ for di in range(0,len(dirs)):
 datasample = np.genfromtxt(rootpath+'/'+dirs[0]+'/'+datadict[0][0])
 (m,n) = np.shape(datasample)
 m = 1
-trainingset = [[] for i in range(m)]
+#trainingset = [[] for i in range(m)]
+trainingset = []
 classdata = []
 for k, v in trdict.iteritems():
-    classset = [[] for i in range(m)]
+    classset = []
     for _v in v:
         data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
-        for i in range(m):
-            trainingset[i].append(data[i].tolist())
-            classset[i].append(data[i].tolist())
-    classdata.append(np.array(classset))
-
-GMMs = []
-for i in range(m):
-    print "GMM #", i
-    GMMs.append(GMM(trainingset[i], len(dirs), "full"))
-    GMMs[i].EMfit(trainingset[i], 2)
-    #GMMs[i].saveloglikelihood('likelihood'+str(i))
-    for j in range(len(dirs)):
-        GMMs[i].classcluster(classdata[j][i],j)
-    print GMMs[i].classclust
+        #for i in range(m)
+        trainingset.append(data)
+        classset.append(data)
+    classdata.append(np.concatenate(classset))
+trainingset = np.concatenate(trainingset)
+print np.shape(trainingset)
+print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
+#for i in range(m):
+#print "GMM #", i
+GMMs = GMM(trainingset, len(dirs), "full")
+GMMs.EMfit(trainingset, 40)
+GMMs.saveloglikelihood('likelihood')
+for j in range(len(dirs)):
+    GMMs.classcluster(classdata[j],j)
+    print GMMs.classclust
 
 testset = [[] for i in range(m)]
 #testtruth = [[] for i in range(m)]
@@ -196,5 +198,3 @@ for i in range(m):
     print "GMM probability", [a/np.sum(a) for a in p]
     
 print "Sum", pred
-
-

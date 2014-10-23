@@ -28,11 +28,29 @@ class GMM(object):
         for cluster in clusters:
             self.model_centers.append(np.mean(cluster, axis=0))
             if dim == 1:
+                self.model_covar.append(np.var(cluster))
+            else:
                 if covar_type is "full":
                     self.model_covar.append(np.cov(cluster, rowvar=0))
                 elif covar_type is "diagonal":
                     self.model_covar.append(np.diag(np.diag(np.cov(cluster, rowvar=0))))
-            self.model_priors.append(float(len(cluster))/float(len(trainData)))
+            self.model_priors.append(1.0/n_clusters)
+        print "Kmean Centers", self.model_centers
+
+    def initwithclass(self, cluster, cl_no, covar_type = "full"):
+        
+        dim = np.shape(cluster)[1]
+        print np.shape(cluster)
+        self.model_centers[cl_no] = np.mean(cluster, axis=0)
+        print np.shape(self.model_centers)
+        if dim == 1:
+            self.model_covar[cl_no] = np.var(cluster)
+        else:
+            if covar_type is "full":
+                self.model_covar[cl_no] = np.cov(cluster, rowvar=0)
+            elif covar_type is "diagonal":
+                self.model_covar[cl_no] = np.diag(np.diag(np.cov(cluster, rowvar=0)))
+        self.model_priors[cl_no] = float(len(cluster))/float(len(trainData))
 
     def pdf(self, data):
         #print data.shape
@@ -48,16 +66,13 @@ class GMM(object):
             else:
                 A = np.linalg.inv(covar)
                 det = np.fabs(np.linalg.det(covar))
-            k = (2.0*np.pi)**(dim/2.0) * (det)**(0.5)
+            k = (2.0*np.pi)**(dim/2.0)  * np.array(det)**(0.5)
             p = self.model_priors[i] * np.exp(float(-0.5 * x_mu * A * x_mu.T)) / k
             if p == 0:
                 p = np.exp(-745)
             prob.append(p)
 
         #print prob
-
-
-
         return prob
 
     def EMfit(self, trainData, n_iter = 100):
@@ -78,8 +93,9 @@ class GMM(object):
             Gamma = np.array(gamma)
             #print np.shape(Gamma)
             Nk = np.sum(Gamma,axis=0)
+            self.model_centers = []
             for i in range(self.n_clusters):
-                mu = (1.0/Nk[i]) * np.dot(Gamma[:,i].T,data)
+                mu = (1.0/Nk[i]) * np.squeeze(np.dot(Gamma[:,i].T,data))
                 sigma = np.zeros((dim,dim))
 
                 for j in range(N):
@@ -88,18 +104,20 @@ class GMM(object):
                                 
                 sigma = sigma / Nk[i]
 
-                self.model_centers[i] = mu
+                self.model_centers.append(mu)
                 if self.covar_type is "full":
                     self.model_covar[i] = sigma
                 elif self.covar_type is "diagonal":
                     self.model_covar[i] = np.diag(np.diag(sigma))
                 self.model_priors[i] = Nk[i] / np.sum(Nk)
+            print self.model_centers
             #print "Centeres", self.model_centers
             #print "Covariance", self.model_covar
             #print "Prior", self.model_priors
             #Log Likelihood
             old_ll = ll
             ll = 0
+            print np.shape(self.model_centers)
             for x in trainData:
                 ll += np.log(np.sum(self.pdf(x)))
             self.loglik.append(ll)
@@ -182,10 +200,17 @@ for i in range(n):
     trainData = np.matrix(trainingset)[:,i]
     print np.shape(trainData)
     GMMs.append(GMM(trainData, len(dirs), "full"))
-    GMMs[i].EMfit(trainingset, 20)
+    for j in range(len(dirs)):
+        cldata = np.matrix(classdata[j])[:,i] 
+        print np.shape(cldata)
+        GMMs[i].initwithclass(cldata,j)
+    print GMMs[i].model_centers
+    GMMs[i].EMfit(trainData, 10)
     GMMs[i].saveloglikelihood('likelihood'+str(i))
     for j in range(len(dirs)):
-        classData = np.array(classdata[j])[:,i].T
+        classData = np.matrix(classdata[j])[:,i]
+        #kmm = GMM(classData,1,"full")
+        #print kmm.model_centers
         GMMs[i].classcluster(classData,j)
         print GMMs[i].classclust
 

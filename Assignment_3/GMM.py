@@ -16,7 +16,6 @@ class GMM(object):
         self.model_covar = []
         self.model_priors = []
         self.loglik = []
-        self.classclust = np.zeros(n_clusters)
 
         kmeans = KMeans(init = 'k-means++', n_clusters = n_clusters, n_jobs = -1)
     
@@ -35,22 +34,6 @@ class GMM(object):
                 elif covar_type is "diagonal":
                     self.model_covar.append(np.diag(np.diag(np.cov(cluster, rowvar=0))))
             self.model_priors.append(1.0/n_clusters)
-        print "Kmean Centers", self.model_centers
-
-    def initwithclass(self, cluster, cl_no, covar_type = "full"):
-        
-        dim = np.shape(cluster)[1]
-        print np.shape(cluster)
-        self.model_centers[cl_no] = np.mean(cluster, axis=0)
-        print np.shape(self.model_centers)
-        if dim == 1:
-            self.model_covar[cl_no] = np.var(cluster)
-        else:
-            if covar_type is "full":
-                self.model_covar[cl_no] = np.cov(cluster, rowvar=0)
-            elif covar_type is "diagonal":
-                self.model_covar[cl_no] = np.diag(np.diag(np.cov(cluster, rowvar=0)))
-        self.model_priors[cl_no] = float(len(cluster))/float(len(trainData))
 
     def pdf(self, data):
         #print data.shape
@@ -82,7 +65,7 @@ class GMM(object):
         ll = np.exp(-700) #large negative initial value for init
     
         for k in range(n_iter):         
-        
+    
             #E step
             print "Iter ", k
             gamma = []
@@ -110,20 +93,21 @@ class GMM(object):
                 elif self.covar_type is "diagonal":
                     self.model_covar[i] = np.diag(np.diag(sigma))
                 self.model_priors[i] = Nk[i] / np.sum(Nk)
-            print self.model_centers
+
             #print "Centeres", self.model_centers
             #print "Covariance", self.model_covar
             #print "Prior", self.model_priors
             #Log Likelihood
             old_ll = ll
             ll = 0
-            print np.shape(self.model_centers)
+
             for x in trainData:
                 ll += np.log(np.sum(self.pdf(x)))
             self.loglik.append(ll)
 
-            #if old_ll > ll:
-            #    break
+            if ll - old_ll < 0.01:
+                print "Converged!"
+                return
 
     def plotloglikelihood(self):
         plt.plot(self.loglik)
@@ -137,32 +121,14 @@ class GMM(object):
         plt.ylabel('Log Likelihood')
         plt.savefig(filename+'.png')
 
-    def classcluster(self, classData, class_no):
-        #call separately with data of all classes
-        y = []
-        for x in classData:
-            y.append(self.pdf(x))
-
-        totes = np.sum(y,axis=0)
-        print totes
-        idx = totes.tolist().index(np.max(totes))
-        self.classclust[idx] = class_no
-
-        print self.classclust
-
-    def predict_class(self,testData):
-        y = []
-        
+    def predict(self,testData):
+        p = 0
         for x in testData:
-            y.append(self.pdf(x)/np.sum(self.pdf(x)))
+            p += np.log(np.sum(self.pdf(x)))
 
-        p = np.zeros((np.shape(y)))
+        return p
 
-        for idx in range(self.n_clusters):
-            p[:,self.classcluster[idx]] = np.array(y)[:,idx] 
-
-        return np.array(p)
-
+# Read files - split to train and test
 rootpath = 'GMM/features'
 path, dirs, files  = os.walk(rootpath).next()
 datadict = dict()
@@ -180,54 +146,31 @@ for di in range(0,len(dirs)):
 datasample = np.genfromtxt(rootpath+'/'+dirs[0]+'/'+datadict[0][0])
 (m,n) = np.shape(datasample)
 
-trainingset = []
 classdata = []
 for k, v in trdict.iteritems():
     classset = []
     for _v in v:
         data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
-        #for i in range(m)
-        trainingset.append(data)
         classset.append(data)
     classdata.append(np.concatenate(classset))
-trainingset = np.concatenate(trainingset)
-print np.shape(trainingset)
 print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
 
+#Train the GMMs for each class
 GMMs = []
-for i in range(n):
-    print "GMM #", i
-    trainData = np.matrix(trainingset)[:,i]
-    print np.shape(trainData)
-    GMMs.append(GMM(trainData, len(dirs), "full"))
-    for j in range(len(dirs)):
-        cldata = np.matrix(classdata[j])[:,i] 
-        print np.shape(cldata)
-        GMMs[i].initwithclass(cldata,j)
-    print GMMs[i].model_centers
-    GMMs[i].EMfit(trainData, 10)
+for i in range(len(dirs)):
+    print "Training GMM for", dirs[i]
+    GMMs.append(GMM(classdata[i], 5, "full"))
+    GMMs[i].EMfit(classdata[i], 30)
     GMMs[i].saveloglikelihood('likelihood'+str(i))
-    for j in range(len(dirs)):
-        classData = np.matrix(classdata[j])[:,i]
-        #kmm = GMM(classData,1,"full")
-        #print kmm.model_centers
-        GMMs[i].classcluster(classData,j)
-        print GMMs[i].classclust
-
-testset = [[] for i in range(m)]
-#testtruth = [[] for i in range(m)]
-#for k, v in testdict.iteritems():
-for _v in testdict[1]:
-    print _v
-    #elementlist.append(list(chain.from_iterable(np.genfromtxt(rootpath +'/' + dirs[k] +'/' +_v).tolist())))
-    data = np.genfromtxt(rootpath+'/'+dirs[1]+'/'+_v)
-    testset.append(data[i].tolist())
-        #testtruth[i].append(k)
-testset = np.concatenate(testset)
-
-pred = np.zeros((np.shape(testset)[0],3))
-p = GMMs[i].predict_class(testset[i])
-pred += [a/np.sum(a) for a in p]
-print "GMM probability", [a/np.sum(a) for a in p]
-    
-print "Sum", pred
+            
+#Use GMMs for testing            
+for k, v in testdict.iteritems(): 
+    print 'Testing class', dirs[k]
+    prediction = []
+    for _v in v:
+        posterior = []
+        data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
+        for i in range(len(dirs)):
+            posterior.append(GMMs[i].predict(data))
+        prediction.append(posterior.index(np.max(posterior)))
+    print "Classes 0, 1, 2 in", k, ":", prediction.count(0), prediction.count(1), prediction.count(2)

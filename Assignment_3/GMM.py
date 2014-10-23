@@ -105,6 +105,7 @@ class GMM(object):
                 ll += np.log(np.sum(self.pdf(x)))
             self.loglik.append(ll)
 
+            print ll - old_ll
             if ll - old_ll < 0.01:
                 print "Converged!"
                 return
@@ -129,7 +130,7 @@ class GMM(object):
         return p
 
 # Read files - split to train and test
-rootpath = 'GMM/features'
+rootpath = 'Digits/digit_data'
 path, dirs, files  = os.walk(rootpath).next()
 datadict = dict()
 trdict, testdict = dict(), dict()
@@ -159,8 +160,8 @@ print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
 GMMs = []
 for i in range(len(dirs)):
     print "Training GMM for", dirs[i]
-    GMMs.append(GMM(classdata[i], 5, "full"))
-    GMMs[i].EMfit(classdata[i], 30)
+    GMMs.append(GMM(classdata[i], 2, "full"))
+    GMMs[i].EMfit(classdata[i], 2)
     GMMs[i].saveloglikelihood('likelihood'+str(i))
             
 #Use GMMs for testing            
@@ -173,4 +174,4 @@ for k, v in testdict.iteritems():
         for i in range(len(dirs)):
             posterior.append(GMMs[i].predict(data))
         prediction.append(posterior.index(np.max(posterior)))
-    print "Classes 0, 1, 2 in", k, ":", prediction.count(0), prediction.count(1), prediction.count(2)
+    print "Class-wise count:", [prediction.count(i) for i in range(len(dirs))]

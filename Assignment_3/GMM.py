@@ -27,10 +27,11 @@ class GMM(object):
 
         for cluster in clusters:
             self.model_centers.append(np.mean(cluster, axis=0))
-            if covar_type is "full":
-                self.model_covar.append(np.cov(cluster, rowvar=0))
-            elif covar_type is "diagonal":
-                self.model_covar.append(np.diag(np.diag(np.cov(cluster, rowvar=0))))
+            if dim == 1:
+                if covar_type is "full":
+                    self.model_covar.append(np.cov(cluster, rowvar=0))
+                elif covar_type is "diagonal":
+                    self.model_covar.append(np.diag(np.diag(np.cov(cluster, rowvar=0))))
             self.model_priors.append(float(len(cluster))/float(len(trainData)))
 
     def pdf(self, data):
@@ -41,8 +42,12 @@ class GMM(object):
         for i in range(self.n_clusters):
             x_mu = np.matrix(data - self.model_centers[i])
             covar = np.matrix(self.model_covar[i])
-            A = np.linalg.inv(covar)
-            det = np.fabs(np.linalg.det(covar))
+            if dim == 1:
+                A = 1.0/covar
+                det = np.fabs(covar[0])
+            else:
+                A = np.linalg.inv(covar)
+                det = np.fabs(np.linalg.det(covar))
             k = (2.0*np.pi)**(dim/2.0) * (det)**(0.5)
             p = self.model_priors[i] * np.exp(float(-0.5 * x_mu * A * x_mu.T)) / k
             if p == 0:
@@ -156,8 +161,7 @@ for di in range(0,len(dirs)):
 
 datasample = np.genfromtxt(rootpath+'/'+dirs[0]+'/'+datadict[0][0])
 (m,n) = np.shape(datasample)
-m = 1
-#trainingset = [[] for i in range(m)]
+
 trainingset = []
 classdata = []
 for k, v in trdict.iteritems():
@@ -171,14 +175,19 @@ for k, v in trdict.iteritems():
 trainingset = np.concatenate(trainingset)
 print np.shape(trainingset)
 print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
-#for i in range(m):
-#print "GMM #", i
-GMMs = GMM(trainingset, len(dirs), "full")
-GMMs.EMfit(trainingset, 40)
-GMMs.saveloglikelihood('likelihood')
-for j in range(len(dirs)):
-    GMMs.classcluster(classdata[j],j)
-    print GMMs.classclust
+
+GMMs = []
+for i in range(n):
+    print "GMM #", i
+    trainData = np.matrix(trainingset)[:,i]
+    print np.shape(trainData)
+    GMMs.append(GMM(trainData, len(dirs), "full"))
+    GMMs[i].EMfit(trainingset, 20)
+    GMMs[i].saveloglikelihood('likelihood'+str(i))
+    for j in range(len(dirs)):
+        classData = np.array(classdata[j])[:,i].T
+        GMMs[i].classcluster(classData,j)
+        print GMMs[i].classclust
 
 testset = [[] for i in range(m)]
 #testtruth = [[] for i in range(m)]

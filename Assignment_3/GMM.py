@@ -135,7 +135,7 @@ class GMM(object):
 
         p = np.zeros((np.shape(y)))
 
-        for idx in range(self.n_clusters):=
+        for idx in range(self.n_clusters):
             p[:,self.classcluster[idx]] = np.array(y)[:,idx] 
 
         return np.array(p)
@@ -187,14 +187,13 @@ for _v in testdict[1]:
     print _v
     #elementlist.append(list(chain.from_iterable(np.genfromtxt(rootpath +'/' + dirs[k] +'/' +_v).tolist())))
     data = np.genfromtxt(rootpath+'/'+dirs[1]+'/'+_v)
-    for i in range(m):
-        testset[i].append(data[i].tolist())
+    testset.append(data[i].tolist())
         #testtruth[i].append(k)
+testset = np.concatenate(testset)
 
-pred = np.zeros((np.shape(testset)[1],3))
-for i in range(m):
-    p = GMMs[i].predict_class(testset[i])
-    pred += [a/np.sum(a) for a in p]
-    print "GMM probability", [a/np.sum(a) for a in p]
+pred = np.zeros((np.shape(testset)[0],3))
+p = GMMs[i].predict_class(testset[i])
+pred += [a/np.sum(a) for a in p]
+print "GMM probability", [a/np.sum(a) for a in p]
     
 print "Sum", pred

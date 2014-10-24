@@ -53,7 +53,7 @@ for k, v in trdict.iteritems():
     testclassset = []
     i = 0
     for _v in v:
-        if (i-k*len(v)/3.0) > 0 and  (i-k*len(v)/3.0) < 0.7*(len(v)/3.0):
+        if i < 0.7*len(v):
             #print _v
             data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
             classlabels.append(k)#for i in range(m)
@@ -70,7 +70,7 @@ for k, v in trdict.iteritems():
     testclassdata.append(np.concatenate(testclassset))
 trainingset = np.concatenate(trainingset)
 testingset = np.concatenate(testingset)
-print np.shape(trainingset)
+#print np.shape(trainingset)
 for i in range(0,trainingset.shape[1]):
     trainset = trainingset[:,i].reshape(trainingset.shape[0]/split,split)
     kmm = KMeans()
@@ -94,14 +94,41 @@ for i in range(0,nclasses):
             newtrainset.append(quantized_set[:,k])
     
     newtrainset = np.asarray(newtrainset)
-    print newtrainset.shape
-    hmm = HMM(3)
+    #print newtrainset.shape
+    hmm = HMM(64)
     hmm.fit([newtrainset])
     hmmclass.append(hmm)
 
-print testingset.shape
-t = quantize_data(testingset[0:36,:], kmms)
-print t.shape
-for hm in hmmclass:
-    print hm.score(t.T)
-print testclasslabels[0]
+#print testingset.shape
+rowdivision = datasample.shape[0]
+t = []
+for i in xrange(int(round(testingset.shape[0]/rowdivision))):
+    t.append( quantize_data(testingset[rowdivision*i:rowdivision*(i+1),:], kmms))
+#print t.shape
+t = np.asarray(t)
+rlabels = []
+for ts in t:
+    i = 0
+    index = 0
+    minlikely = -10000000
+    for hm in hmmclass:
+        sc =  hm.score(ts.T)
+        if sc >  minlikely:
+            index = i
+            minlikely = sc
+        i = i+1
+    rlabels.append(index)
+
+confmat = np.zeros((nclasses,nclasses))
+print len(rlabels), len(testclasslabels)
+
+for t in range(0,len(rlabels)):
+    #print t
+    confmat[testclasslabels[t],rlabels[t]] = confmat[testclasslabels[t],rlabels[t]]  + 1
+plt.matshow(confmat)
+plt.colorbar()
+plt.title('Confusion Matrix for the image dataset')
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+plt.show()
+

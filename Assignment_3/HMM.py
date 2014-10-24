@@ -5,8 +5,9 @@ from sklearn.cluster import KMeans
 from scipy.misc import imread
 import matplotlib.pyplot as plt
 from scipy.stats import itemfreq
+from sklearn.hmm import GaussianHMM as HMM
 #from hmm.continuous.GMHMM import GMHMM as HMM
-from hmm.discrete.DiscreteHMM import DiscreteHMM as HMM
+#from hmm.discrete.DiscreteHMM import DiscreteHMM as HMM
 #model = GaussianHMM(n_components = 2)
 rootpath = 'GMM/features'
 path, dirs, files  = os.walk(rootpath).next()
@@ -31,7 +32,12 @@ img = imread('GMM/coast/coast_bea5.jpg')
 To solve this problem, we have to quantize the vectors. There are multiple ways of doing this, we can either do this by kmeans compression, and cluster the image and predict cluster numbers or visual inspection. 
 '''
 
+def quantize_data(datapoint, kmeansarray):
+    quant = []
+    for i in xrange(datapoint.shape[1]):
+        quant.append(kmeansarray[i].predict(datapoint[:,i]))
 
+    return np.asarray(quant)
 
 split = np.shape(datasample)[0]
 quantized_set = []
@@ -47,7 +53,7 @@ for k, v in trdict.iteritems():
     testclassset = []
     i = 0
     for _v in v:
-        if i+k*len(v)/3.0 < (k*len(v)/3.0 + 0.7*(len(v)-k*len(v)/3.0)):
+        if (i-k*len(v)/3.0) > 0 and  (i-k*len(v)/3.0) < 0.7*(len(v)/3.0):
             #print _v
             data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
             classlabels.append(k)#for i in range(m)
@@ -89,6 +95,13 @@ for i in range(0,nclasses):
     
     newtrainset = np.asarray(newtrainset)
     print newtrainset.shape
-    hmm = HMM(3,3)
-    hmm.train(newtrainset,100)
+    hmm = HMM(3)
+    hmm.fit([newtrainset])
     hmmclass.append(hmm)
+
+print testingset.shape
+t = quantize_data(testingset[0:36,:], kmms)
+print t.shape
+for hm in hmmclass:
+    print hm.score(t.T)
+print testclasslabels[0]

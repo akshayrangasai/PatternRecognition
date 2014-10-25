@@ -106,10 +106,9 @@ class GMM(object):
                 ll += np.log(np.sum(self.pdf(x)))
             self.loglik.append(ll)
 
-            print ll - old_ll
-            if ll - old_ll < 0.01:
-                print "Converged!"
-                return
+            #if ll - old_ll < 0.01:
+            #    print "Converged!"
+            #    return
 
     def plotloglikelihood(self):
         plt.clf()
@@ -145,7 +144,7 @@ class GMM(object):
             prob.append(p)
         return np.sum(prob)
 
-def putplots(k,iters):
+def putplots(k,clusters,iters):
         #plot points
     colors = ["r","b","g"]
     #for i in range(3):
@@ -157,7 +156,7 @@ def putplots(k,iters):
     y = np.arange(0.0,1.0,0.001)
     X,Y = np.meshgrid(x,y)
     z = []
-    for i in range(len(dirs)):
+    for i in range(clusters):
         sigma_x = math.sqrt(GMMs[k].model_covar[i][0,0])
         sigma_y = math.sqrt(GMMs[k].model_covar[i][0,0])
         Z = mlab.bivariate_normal(X,Y,sigma_x,sigma_y, GMMs[k].model_centers[i][0], GMMs[k].model_centers[i][1],GMMs[k].model_covar[i][1,0])
@@ -196,14 +195,14 @@ for k, v in trdict.iteritems():
 print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
 
 #Train the GMMs for each class
-n_iter = [10,15,20,30]
-for iters in n_iters:
+iters = [30]
+for n_iter in iters:
     GMMs = []
     for i in range(len(dirs)):
         print "Training GMM for", dirs[i]
         GMMs.append(GMM(classdata[i], 4, "full"))
-        GMMs[i].EMfit(classdata[i], iters)
-        putplots(i,iters)
+        GMMs[i].EMfit(classdata[i], n_iter)
+        #putplots(i,4,0)
         GMMs[i].saveloglikelihood('likelihood'+str(i))
             
 #Use GMMs for testing  
@@ -230,6 +229,7 @@ for i in range(len(dirs)):
 
 print 'Precision', Precision
 print 'Recall', Recall
+print 'Confusion', confmat
 
 plt.matshow(confmat)
 plt.colorbar()

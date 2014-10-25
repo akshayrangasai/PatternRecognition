@@ -3,6 +3,7 @@ import math,os
 from sklearn.cluster import KMeans
 from itertools import chain
 import matplotlib.pyplot as plt
+import matplotlib.mlab as mlab
 
 class GMM(object):
 
@@ -111,12 +112,14 @@ class GMM(object):
                 return
 
     def plotloglikelihood(self):
+        plt.clf()
         plt.plot(self.loglik)
         plt.xlabel('Number of iterations')
         plt.ylabel('Log Likelihood')
         plt.show()
 
     def saveloglikelihood(self, filename):
+        plt.clf()
         plt.plot(self.loglik)
         plt.xlabel('Number of iterations')
         plt.ylabel('Log Likelihood')
@@ -129,8 +132,44 @@ class GMM(object):
 
         return p
 
+    def pdf2d(self, data):
+        dim = np.shape(data)[0]
+        prob = []
+        for i in range(self.n_clusters):
+            x_mu = np.matrix(data - self.model_centers[i][:2])
+            covar = np.matrix(self.model_covar[i])[:2,:2]
+            A = np.linalg.inv(covar)
+            det = np.fabs(np.linalg.det(covar))
+            k = (2.0*np.pi)**(dim/2.0)  * np.array(det)**(0.5)
+            p = self.model_priors[i] * np.exp(float(-0.5 * x_mu * A * x_mu.T)) / k
+            prob.append(p)
+        return np.sum(prob)
+
+def putplots(k,iters):
+        #plot points
+    colors = ["r","b","g"]
+    #for i in range(3):
+    #    plt.scatter(classdata[i][:,0],classdata[i][:,1], s=1, color = colors[i], marker = 'o')
+    #plt.savefig('trainingdata_scatter.png')
+
+    plt.clf()
+    x = np.arange(0.0,1.0,0.001)
+    y = np.arange(0.0,1.0,0.001)
+    X,Y = np.meshgrid(x,y)
+    z = []
+    for i in range(len(dirs)):
+        sigma_x = math.sqrt(GMMs[k].model_covar[i][0,0])
+        sigma_y = math.sqrt(GMMs[k].model_covar[i][0,0])
+        Z = mlab.bivariate_normal(X,Y,sigma_x,sigma_y, GMMs[k].model_centers[i][0], GMMs[k].model_centers[i][1],GMMs[k].model_covar[i][1,0])
+        Cp = plt.contour(X,Y,Z)
+        plt.clabel(Cp, inline = 1, fontsize = 10)
+
+    plt.scatter(classdata[k][:,0],classdata[k][:,1], s=1, color = colors[k], marker = 'o')
+    plt.title('Training Data and mixture components')
+    plt.savefig('contours'+dirs[k]+str(iters)+'.png')
+
 # Read files - split to train and test
-rootpath = 'Digits/digit_data'
+rootpath = 'GMM/features'
 path, dirs, files  = os.walk(rootpath).next()
 datadict = dict()
 trdict, testdict = dict(), dict()
@@ -157,14 +196,18 @@ for k, v in trdict.iteritems():
 print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
 
 #Train the GMMs for each class
-GMMs = []
-for i in range(len(dirs)):
-    print "Training GMM for", dirs[i]
-    GMMs.append(GMM(classdata[i], 2, "full"))
-    GMMs[i].EMfit(classdata[i], 2)
-    GMMs[i].saveloglikelihood('likelihood'+str(i))
+n_iter = [10,15,20,30]
+for iters in n_iters:
+    GMMs = []
+    for i in range(len(dirs)):
+        print "Training GMM for", dirs[i]
+        GMMs.append(GMM(classdata[i], 4, "full"))
+        GMMs[i].EMfit(classdata[i], iters)
+        putplots(i,iters)
+        GMMs[i].saveloglikelihood('likelihood'+str(i))
             
-#Use GMMs for testing            
+#Use GMMs for testing  
+confmat = np.zeros((len(dirs),len(dirs)))          
 for k, v in testdict.iteritems(): 
     print 'Testing class', dirs[k]
     prediction = []
@@ -174,4 +217,23 @@ for k, v in testdict.iteritems():
         for i in range(len(dirs)):
             posterior.append(GMMs[i].predict(data))
         prediction.append(posterior.index(np.max(posterior)))
-    print "Class-wise count:", [prediction.count(i) for i in range(len(dirs))]
+    confmat[k] = [prediction.count(i) for i in range(len(dirs))]
+
+Precision = []
+Recall = []
+for i in range(len(dirs)):
+    Ncp = confmat[i,i]
+    Nfp = np.sum(confmat[i,:]) - Ncp
+    Nfn = np.sum(confmat[:,i]) - Ncp
+    Precision.append(float(Ncp)/float(Ncp + Nfp))
+    Recall.append(float(Ncp)/float(Ncp + Nfn))
+
+print 'Precision', Precision
+print 'Recall', Recall
+
+plt.matshow(confmat)
+plt.colorbar()
+plt.title('Confusion Matrix for the image dataset')
+plt.xlabel('Predicted Label')
+plt.ylabel('True Label')
+#plt.show()

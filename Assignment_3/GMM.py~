@@ -3,7 +3,7 @@ import math,os
 from sklearn.cluster import KMeans
 from itertools import chain
 import matplotlib.pyplot as plt
-import matplotlib.mlab as mlab
+from mpl_toolkits.mplot3d import Axes3D
 
 class GMM(object):
 
@@ -106,19 +106,18 @@ class GMM(object):
                 ll += np.log(np.sum(self.pdf(x)))
             self.loglik.append(ll)
 
-            #if ll - old_ll < 0.01:
-            #    print "Converged!"
-            #    return
+            print ll - old_ll
+            if ll - old_ll < 0.01:
+                print "Converged!"
+                return
 
     def plotloglikelihood(self):
-        plt.clf()
         plt.plot(self.loglik)
         plt.xlabel('Number of iterations')
         plt.ylabel('Log Likelihood')
         plt.show()
 
     def saveloglikelihood(self, filename):
-        plt.clf()
         plt.plot(self.loglik)
         plt.xlabel('Number of iterations')
         plt.ylabel('Log Likelihood')
@@ -131,28 +130,32 @@ class GMM(object):
 
         return p
 
-def putplots(k,clusters,iters):
-        #plot points
-    colors = ["r","b","g"]
-    #for i in range(3):
-    #    plt.scatter(classdata[i][:,0],classdata[i][:,1], s=1, color = colors[i], marker = 'o')
-    #plt.savefig('trainingdata_scatter.png')
+    def pdf2d(self, data):
+        dim = np.shape(data)[0]
+        prob = []
+        for i in range(self.n_clusters):
+            x_mu = np.matrix(data - self.model_centers[i][:2])
+            covar = np.matrix(self.model_covar[i])[:2,:2]
+            A = np.linalg.inv(covar)
+            det = np.fabs(np.linalg.det(covar))
+            k = (2.0*np.pi)**(dim/2.0)  * np.array(det)**(0.5)
+            p = self.model_priors[i] * np.exp(float(-0.5 * x_mu * A * x_mu.T)) / k
+            prob.append(p)
+        return np.sum(prob)
 
-    plt.clf()
-    x = np.arange(0.0,1.0,0.001)
-    y = np.arange(0.0,1.0,0.001)
-    X,Y = np.meshgrid(x,y)
-    z = []
-    for i in range(clusters):
-        sigma_x = math.sqrt(GMMs[k].model_covar[i][0,0])
-        sigma_y = math.sqrt(GMMs[k].model_covar[i][0,0])
-        Z = mlab.bivariate_normal(X,Y,sigma_x,sigma_y, GMMs[k].model_centers[i][0], GMMs[k].model_centers[i][1],GMMs[k].model_covar[i][1,0])
-        Cp = plt.contour(X,Y,Z)
-        plt.clabel(Cp, inline = 1, fontsize = 10)
+    def plotcontours(self):
+        fig = plt.figure()
+        ax = fig.add_subplot(111, projection='3d')
+        x = np.arange(3.2,5.0,0.0001)
+        y = np.arange(3.2,5.0,0.0001)
+        X,Y = np.meshgrid(x,y)
+        zs = np.array([self.pdf2d([xx,yy]) for xx,yy in zip(np.ravel(X), np.ravel(Y))])
+        Z = zs.reshape(X.shape)
 
-    plt.scatter(classdata[k][:,0],classdata[k][:,1], s=1, color = colors[k], marker = 'o')
-    plt.title('Training Data and mixture components')
-    plt.savefig('contours_diag'+dirs[k]+str(iters)+'.png')
+        ax.plot_surface(X,Y,Z)
+
+        plt.show()
+    
 
 # Read files - split to train and test
 rootpath = 'GMM/features'
@@ -182,15 +185,14 @@ for k, v in trdict.iteritems():
 print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
 
 #Train the GMMs for each class
-iters = [5,15,30]
-for n_iter in iters:
-    GMMs = []
-    for i in range(len(dirs)):
-        print "Training GMM for", dirs[i]
-        GMMs.append(GMM(classdata[i], 4, "diagonal"))
-        #GMMs[i].EMfit(classdata[i], n_iter)
-        putplots(i,4,0)
-        #GMMs[i].saveloglikelihood('likelihood_diag'+str(i))
+GMMs = []
+for i in range(len(dirs)):
+    print "Training GMM for", dirs[i]
+    GMMs.append(GMM(classdata[i], 4, "full"))
+    GMMs[i].EMfit(classdata[i], 10)
+    print GMMs[i].model_centers
+    GMMs[i].plotcontours()
+    GMMs[i].saveloglikelihood('likelihood'+str(i))
             
 #Use GMMs for testing  
 confmat = np.zeros((len(dirs),len(dirs)))          
@@ -216,12 +218,10 @@ for i in range(len(dirs)):
 
 print 'Precision', Precision
 print 'Recall', Recall
-print 'Confusion', confmat
 
-plt.clf()
 plt.matshow(confmat)
 plt.colorbar()
 plt.title('Confusion Matrix for the image dataset')
 plt.xlabel('Predicted Label')
 plt.ylabel('True Label')
-#plt.savefig('confusion_diag.png')
+plt.show()

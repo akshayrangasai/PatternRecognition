@@ -131,19 +131,6 @@ class GMM(object):
 
         return p
 
-    def pdf2d(self, data):
-        dim = np.shape(data)[0]
-        prob = []
-        for i in range(self.n_clusters):
-            x_mu = np.matrix(data - self.model_centers[i][:2])
-            covar = np.matrix(self.model_covar[i])[:2,:2]
-            A = np.linalg.inv(covar)
-            det = np.fabs(np.linalg.det(covar))
-            k = (2.0*np.pi)**(dim/2.0)  * np.array(det)**(0.5)
-            p = self.model_priors[i] * np.exp(float(-0.5 * x_mu * A * x_mu.T)) / k
-            prob.append(p)
-        return np.sum(prob)
-
 def putplots(k,clusters,iters):
         #plot points
     colors = ["r","b","g"]
@@ -165,7 +152,7 @@ def putplots(k,clusters,iters):
 
     plt.scatter(classdata[k][:,0],classdata[k][:,1], s=1, color = colors[k], marker = 'o')
     plt.title('Training Data and mixture components')
-    plt.savefig('contours'+dirs[k]+str(iters)+'.png')
+    plt.savefig('contours_diag'+dirs[k]+str(iters)+'.png')
 
 # Read files - split to train and test
 rootpath = 'GMM/features'
@@ -195,15 +182,15 @@ for k, v in trdict.iteritems():
 print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
 
 #Train the GMMs for each class
-iters = [30]
+iters = [5,15,30]
 for n_iter in iters:
     GMMs = []
     for i in range(len(dirs)):
         print "Training GMM for", dirs[i]
-        GMMs.append(GMM(classdata[i], 4, "full"))
+        GMMs.append(GMM(classdata[i], 4, "diagonal"))
         GMMs[i].EMfit(classdata[i], n_iter)
-        #putplots(i,4,0)
-        GMMs[i].saveloglikelihood('likelihood'+str(i))
+        putplots(i,4,n_iter)
+        GMMs[i].saveloglikelihood('likelihood_diag'+str(i))
             
 #Use GMMs for testing  
 confmat = np.zeros((len(dirs),len(dirs)))          
@@ -231,9 +218,10 @@ print 'Precision', Precision
 print 'Recall', Recall
 print 'Confusion', confmat
 
+plt.clf()
 plt.matshow(confmat)
 plt.colorbar()
 plt.title('Confusion Matrix for the image dataset')
 plt.xlabel('Predicted Label')
 plt.ylabel('True Label')
-#plt.show()
+plt.savefig('confusion_diag.png')

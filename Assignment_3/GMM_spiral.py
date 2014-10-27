@@ -146,68 +146,55 @@ def putplots(k,clusters,iters):
     for i in range(clusters):
         sigma_x = math.sqrt(GMMs[k].model_covar[i][0,0])
         sigma_y = math.sqrt(GMMs[k].model_covar[i][1,1])
+        #print GMMs[k].model_covar, GMMs[k].model_centers
+        #print sigma_x, sigma_y
+        #print 'rho', GMMs[k].model_covar[i][1,0]/(sigma_x*sigma_y)
         Z = mlab.bivariate_normal(X,Y,sigma_x,sigma_y, GMMs[k].model_centers[i][0], GMMs[k].model_centers[i][1],GMMs[k].model_covar[i][1,0])
+        #print Z
         Cp = plt.contour(X,Y,Z)
         plt.clabel(Cp, inline = 1, fontsize = 10)
 
-    plt.scatter(classdata[k][:,0],classdata[k][:,1], s=1, color = colors[k%3], marker = 'o')
+    plt.scatter(classdata[k][:,0],classdata[k][:,1], s=1, color = colors[k], marker = 'o')
     plt.title('Training Data and mixture components')
-    plt.savefig('contours_digit'+dirs[k]+str(iters)+'.png')
+    plt.savefig('contours_spiral'+str(k)+str(iters)+'.png')
 
 # Read files - split to train and test
-rootpath = 'Digits/digit_data'
-path, dirs, files  = os.walk(rootpath).next()
-datadict = dict()
-trdict, testdict = dict(), dict()
-labels = enumerate(dirs)
-for di in range(0,len(dirs)):
-    f = os.listdir(rootpath+ '/'+ dirs[di])
-    datadict[di] = f
+dataset = np.genfromtxt('spiraldata.txt')
+(m,n) = np.shape(dataset)
 
-for di in range(0,len(dirs)):
-    np.random.shuffle(datadict[di])
-    tr_idx = 0.8*np.shape(datadict[di])[0]
-    trdict[di], testdict[di] = datadict[di][:int(tr_idx)], datadict[di][int(tr_idx):]
+classdata = [dataset[:400,:2],dataset[500:900,:2]]
+print np.shape(classdata[0]), np.shape(classdata[1])
 
-datasample = np.genfromtxt(rootpath+'/'+dirs[0]+'/'+datadict[0][0])
-(m,n) = np.shape(datasample)
-
-classdata = []
-for k, v in trdict.iteritems():
-    classset = []
-    for _v in v:
-        data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
-        classset.append(data)
-    classdata.append(np.concatenate(classset))
-print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
+testdata = [dataset[400:500,:2],dataset[900:,:2]]
+print np.shape(testdata[0]), np.shape(testdata[1])
 
 #Train the GMMs for each class
-iters = [0,5,15,20]
+iters = [5]
 for n_iter in iters:
     GMMs = []
-    for i in range(len(dirs)):
-        print "Training GMM for", dirs[i]
-        GMMs.append(GMM(classdata[i], 2, "full"))
+    M = [15, 10]
+    for i in range(2):
+        print "Training GMM for", i
+        GMMs.append(GMM(classdata[i], M[i], "full"))
         GMMs[i].EMfit(classdata[i], n_iter)
-        putplots(i,2,n_iter)
-        #GMMs[i].saveloglikelihood('likelihood_digits'+str(i))
+        putplots(i,M[i],n_iter)
+        GMMs[i].saveloglikelihood('likelihood_spiral'+str(i))
             
 #Use GMMs for testing  
-confmat = np.zeros((len(dirs),len(dirs)))          
-for k, v in testdict.iteritems(): 
-    print 'Testing class', dirs[k]
+confmat = np.zeros((2,2))          
+for j in range(2):
+    print 'Testing class', j
     prediction = []
-    for _v in v:
+    for data in testdata[j]:
         posterior = []
-        data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
-        for i in range(len(dirs)):
-            posterior.append(GMMs[i].predict(data))
+        for i in range(2):
+            posterior.append(GMMs[i].predict([data]))
         prediction.append(posterior.index(np.max(posterior)))
-    confmat[k] = [prediction.count(i) for i in range(len(dirs))]
+    confmat[j] = [prediction.count(i) for i in range(2)]
 
 Precision = []
 Recall = []
-for i in range(len(dirs)):
+for i in range(2):
     Ncp = confmat[i,i]
     Nfp = np.sum(confmat[i,:]) - Ncp
     Nfn = np.sum(confmat[:,i]) - Ncp
@@ -224,4 +211,4 @@ plt.colorbar()
 plt.title('Confusion Matrix for the image dataset')
 plt.xlabel('Predicted Label')
 plt.ylabel('True Label')
-#plt.savefig('confusion_digit.png')
+plt.savefig('confusion_digit.png')

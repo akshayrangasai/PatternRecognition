@@ -139,8 +139,8 @@ def putplots(k,clusters,iters):
     #plt.savefig('trainingdata_scatter.png')
 
     plt.clf()
-    x = np.arange(-20.0,20.0,0.1)
-    y = np.arange(-20.0,20.0,0.1)
+    x = np.arange(0.0,1.0,0.001)
+    y = np.arange(0.0,1.0,0.001)
     X,Y = np.meshgrid(x,y)
     z = []
     for i in range(clusters):
@@ -152,25 +152,16 @@ def putplots(k,clusters,iters):
 
     plt.scatter(classdata[k][:,0],classdata[k][:,1], s=1, color = colors[k%3], marker = 'o')
     plt.title('Training Data and mixture components')
-    plt.savefig('contours_digit'+dirs[k]+str(iters)+'.png')
+    plt.savefig('contours_'+dirs[k]+str(iters)+'.png')
 
 # Read files - split to train and test
-rootpath = 'Digits/digit_data'
+rootpath = 'HWDataset/FeaturesHW/train'
 path, dirs, files  = os.walk(rootpath).next()
-datadict = dict()
-trdict, testdict = dict(), dict()
+trdict = dict()
 labels = enumerate(dirs)
 for di in range(0,len(dirs)):
     f = os.listdir(rootpath+ '/'+ dirs[di])
-    datadict[di] = f
-
-for di in range(0,len(dirs)):
-    np.random.shuffle(datadict[di])
-    tr_idx = 0.8*np.shape(datadict[di])[0]
-    trdict[di], testdict[di] = datadict[di][:int(tr_idx)], datadict[di][int(tr_idx):]
-
-datasample = np.genfromtxt(rootpath+'/'+dirs[0]+'/'+datadict[0][0])
-(m,n) = np.shape(datasample)
+    trdict[di] = f
 
 classdata = []
 for k, v in trdict.iteritems():
@@ -179,18 +170,29 @@ for k, v in trdict.iteritems():
         data = np.genfromtxt(rootpath+'/'+dirs[k]+'/'+_v)
         classset.append(data)
     classdata.append(np.concatenate(classset))
-print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
+print np.shape(classdata), np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
+
+rootpath = 'HWDataset/FeaturesHW/test'
+path, dirs, files  = os.walk(rootpath).next()
+testdict = dict()
+labels = enumerate(dirs)
+for di in range(0,len(dirs)):
+    f = os.listdir(rootpath+ '/'+ dirs[di])
+    testdict[di] = f
+
+datasample = np.genfromtxt(rootpath+'/'+dirs[0]+'/'+testdict[0][0])
+(m,n) = np.shape(datasample)
 
 #Train the GMMs for each class
-iters = [0,5,15,20]
+iters = [0,5,10,15]
 for n_iter in iters:
     GMMs = []
     for i in range(len(dirs)):
         print "Training GMM for", dirs[i]
-        GMMs.append(GMM(classdata[i], 2, "full"))
+        GMMs.append(GMM(classdata[i], 5, "full"))
         GMMs[i].EMfit(classdata[i], n_iter)
-        putplots(i,2,n_iter)
-        #GMMs[i].saveloglikelihood('likelihood_digits'+str(i))
+        putplots(i,5,n_iter)
+        #GMMs[i].saveloglikelihood('likelihood_HW'+str(i))
             
 #Use GMMs for testing  
 confmat = np.zeros((len(dirs),len(dirs)))          
@@ -205,6 +207,8 @@ for k, v in testdict.iteritems():
         prediction.append(posterior.index(np.max(posterior)))
     confmat[k] = [prediction.count(i) for i in range(len(dirs))]
 
+
+print 'Confusion', confmat
 Precision = []
 Recall = []
 for i in range(len(dirs)):
@@ -216,7 +220,6 @@ for i in range(len(dirs)):
 
 print 'Precision', Precision
 print 'Recall', Recall
-print 'Confusion', confmat
 
 plt.clf()
 plt.matshow(confmat)
@@ -224,4 +227,4 @@ plt.colorbar()
 plt.title('Confusion Matrix for the image dataset')
 plt.xlabel('Predicted Label')
 plt.ylabel('True Label')
-#plt.savefig('confusion_digit.png')
+#plt.savefig('confusion_HW.png')

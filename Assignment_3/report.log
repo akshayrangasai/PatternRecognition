@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.26)  27 OCT 2014 22:30
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.26)  27 OCT 2014 23:42
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -127,6 +127,15 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
 ) (./report.aux
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
 
 LaTeX Warning: Label `fig:sfig1' multiply defined.
 
@@ -423,31 +432,36 @@ Underfull \hbox (badness 10000) in paragraph at lines 283--300
 
  []
 
-[6 <./Figures/gmm_images_confusion.png> <./Figures/confusion_diag.png> <./Figur
-es/GMM_precisionvsk_BGR.png> <./Figures/GMM_recallvsk_BGR.png>] (./report.aux)
+<confusion_image_2.png, id=81, 1256.0526pt x 760.2804pt>
+File: confusion_image_2.png Graphic file (type png)
+
+<use confusion_image_2.png> [6 <./Figures/gmm_images_confusion.png> <./Figures/
+confusion_diag.png> <./Figures/GMM_precisionvsk_BGR.png> <./Figures/GMM_recallv
+sk_BGR.png>] [7 <./confusion_image_2.png>] (./report.aux)
 
 LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 1998 strings out of 494647
- 26411 string characters out of 1173989
+ 2005 strings out of 494647
+ 26559 string characters out of 1173989
  73909 words of memory out of 3000000
- 5183 multiletter control sequences out of 15000+50000
- 11044 words of font info for 42 fonts, out of 3000000 for 9000
+ 5188 multiletter control sequences out of 15000+50000
+ 11352 words of font info for 43 fonts, out of 3000000 for 9000
  297 hyphenation exceptions out of 8191
- 27i,7n,24p,431b,262s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-te
-xlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb>
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
-exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (6 pages, 5621925 bytes).
+ 27i,7n,24p,487b,262s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/
+cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb
+></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share
+/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texliv
+e/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on report.pdf (7 pages, 5669931 bytes).
 PDF statistics:
- 116 PDF objects out of 1000 (max. 8388607)
+ 127 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 146 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 151 words of extra memory for PDF output out of 10000 (max. 10000000)
 

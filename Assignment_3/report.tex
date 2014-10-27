@@ -297,4 +297,25 @@ Diagonal Scatterplot: \\
 \end{figure}%
 \end{minipage}
 \\
+\section{Hidden Markov Models}
+\subsection{Solution Methodology}
+The feature vectors were first quantized using a K-means clustering with number of clusters varying from 8 to 16. From this, a new quantized feature set was developed which was used as input to the HMM. This was then tested with the test set, from the given data which was clustered with the given means, to form the  quantized test data. We train a HMM for each class, and the class with maximum emission probability is assigned to the test data. The results are as follows
+\subsection{Image Dataset}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\linewidth]{confusion_image_2.png}
+\caption{Confusion matrix for HMM}
+  \label{fig:sfig1}
+\end{figure}%
+\begin{center}
+\begin{tabular}{|c|c|}
+\hline
+\textbf{Precision} & \textbf{Recall} \\ \hline
+0.487179487179 & 0.95 \\ \hline
+0.68115942029 & 0.783333333333 \\ \hline
+0.941860465116 & 0.609022556391 \\ \hline
+\end{tabular}
+
+\end{center}
+
 \end{document}

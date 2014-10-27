@@ -9,7 +9,7 @@ from sklearn.hmm import GaussianHMM as HMM
 #from hmm.continuous.GMHMM import GMHMM as HMM
 #from hmm.discrete.DiscreteHMM import DiscreteHMM as HMM
 #model = GaussianHMM(n_components = 2)
-rootpath = 'Digits/digit_data'#'GMM/features'
+rootpath = 'GMM/features'
 path, dirs, files  = os.walk(rootpath).next()
 datadict = dict()
 trdict, testdict = dict(), dict()
@@ -136,3 +136,7 @@ plt.xlabel('Predicted Label')
 plt.ylabel('True Label')
 plt.show()
 
+print "Precision and Recall"
+
+for i in xrange(confmat.shape[1]):
+    print confmat[i,i]/sum(confmat[i,:]), confmat[i,i]/sum(confmat[:,i])

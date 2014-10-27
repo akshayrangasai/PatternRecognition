@@ -9,7 +9,7 @@ from sklearn.hmm import GaussianHMM as HMM
 #from hmm.continuous.GMHMM import GMHMM as HMM
 #from hmm.discrete.DiscreteHMM import DiscreteHMM as HMM
 #model = GaussianHMM(n_components = 2)
-rootpath = 'GMM/features'
+rootpath = 'Digits/digit_data'#'GMM/features'
 path, dirs, files  = os.walk(rootpath).next()
 datadict = dict()
 trdict, testdict = dict(), dict()
@@ -40,6 +40,7 @@ def quantize_data(datapoint, kmeansarray):
     return np.asarray(quant)
 
 split = np.shape(datasample)[0]
+print split
 quantized_set = []
 trainingset = []
 testingset = []
@@ -72,7 +73,10 @@ trainingset = np.concatenate(trainingset)
 testingset = np.concatenate(testingset)
 #print np.shape(trainingset)
 for i in range(0,trainingset.shape[1]):
-    trainset = trainingset[:,i].reshape(trainingset.shape[0]/split,split)
+    #print trainingset[:,i].shape[0]/split, split
+    print split
+    trainset = trainingset[:,i]
+    trainset = trainset.reshape((trainingset.shape[0]/split,split))
     kmm = KMeans()
     kmm.fit(trainset)
     kmms.append(kmm)

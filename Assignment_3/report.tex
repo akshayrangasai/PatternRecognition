@@ -14,16 +14,46 @@
 \newpage
 
 \section{Gaussian Mixture Models}
-Gaussian Mixture Models are...
-\begin{equation}
-P(\omega_i | x) = \frac{(P(x|\omega_i)P((\omega_i))}{P(x)}
-\end{equation}
-\\ 
+Gaussian Mixture Models are a type of classification that sets soft boundaries to data. It estimates data as a probabilistic mixture of its features. Each mixture is represented by by a gaussian density function in a gaussian mixture model.
+$$
+p(\bar{x}) = \sum\limits_{i=1}^K \pi_i N(\bar{x}|\mu_i, \Sigma_i)
+$$
+$K$ is the total number of classes, $\pi$ the weights. \\
 
-\begin{itemize}
+Gaussian Mixture Models are solved using the Expectation maximization Algorithm (EM). This consists of calculating the posterior probability $\gamma$ which is calculated by using.
 
-	\item Here, $P(x|\omega_i)$ is known as the class likelihood. 
+$$
+\gamma_{nk} = \frac{\pi_k N(\bar{x}|\mu_k, \Sigma_k)}{\sum\limits_{i=1}^K \pi_i N(\bar{x}|\mu_i, \Sigma_i)}
+$$
+This posterior for each class gives us the contribution of class k to the mixture, using this, we can maximize the other parameters.
+$$
+\pi_k = \frac{\sum\limits_{i=1}^K \gamma_{nk}}{N}
+$$ 
+$$
+\mu_k = \frac{1}{N_k} \sum\limits_{n=1}^N \gamma_{nk}\bar{x}_n
+$$
+$$
+\Sigma_k = \frac{1}{N_k} \sum \limits_{n=1}^N \gamma_{nk}(\bar{x}_n - \mu_k)(\bar{x}_n - \mu_k)^T
+$$
+These three update equations are used to maximize and convergence is checked. The initial point for convergence is usually the k-means algorithm.
+\newpage
+\section{Dynamic Time Warping}
+Dynamic Time Warping is a template matching algorithm that works by using the priciples of dynamic programming. It is a template matching that is capable of matching uneven templates as well. DTW aligns two sequence of feature vectors by warping the time axis iteratively until an optimal match between the two sequences is found. Using this, a distance measure can be computed, and can be used to match to a template.
+\newline \\
+Since we're dealing with continuous sequences in our dataset, the algorithm can be written as: \\ \\
+D[i,j] = $|a[i] - b[j]|$ + min(D(i-1,j), D(i-1,j-1), D(i,j-1))
+\section{Hidden Markov Models}
+A Markov Model is one in which the current state of a system depends only on the present and previous states of the system. The order of the system tells us about the dependency of the nth previous value on the conditional probability density of the model. \\ \\
 
-\end{itemize}
+In a Hidden Markov Model, the state sequence is hidden as is the transition probabilities. We use the HMMs to characterize images and speech data. The performance of the HMM is also benchmarked to that of a GMM.
 
+\section{Metrics}
+The metrics used to evaluate the performance of a classifier are as follows
+\begin{enumerate}
+\item Precision
+\item Recall
+\item ROC Curves
+\end{enumerate}
+\newpage
+\section{Image dataset}
 \end{document}

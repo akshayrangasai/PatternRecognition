@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.26)  27 OCT 2014 21:38
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.26)  27 OCT 2014 22:30
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -126,23 +126,89 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \mathdisplay@stack=\toks22
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
-) (./report.aux)
+) (./report.aux
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+
+LaTeX Warning: Label `fig:sfig1' multiply defined.
+
+)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 8.
-LaTeX Font Info:    ... okay on input line 8.
-
-(/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 9.
+LaTeX Font Info:    ... okay on input line 9.
+ (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count101
 \scratchdimen=\dimen114
@@ -155,61 +221,233 @@ LaTeX Font Info:    ... okay on input line 8.
 \MPnumerator=\count105
 \everyMPtoPDFconversion=\toks24
 )
-LaTeX Font Info:    Try loading font information for U+msa on input line 12.
+LaTeX Font Info:    Try loading font information for U+msa on input line 13.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 12.
+LaTeX Font Info:    Try loading font information for U+msb on input line 13.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 ) [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Underfull \hbox (badness 10000) in paragraph at lines 20--22
+Underfull \hbox (badness 10000) in paragraph at lines 21--23
 
  []
 
 [2]
-Underfull \hbox (badness 10000) in paragraph at lines 41--45
+Underfull \hbox (badness 10000) in paragraph at lines 42--46
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 41--45
+Underfull \hbox (badness 10000) in paragraph at lines 42--46
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 46--47
+Underfull \hbox (badness 10000) in paragraph at lines 47--48
 
  []
 
-[3] [4] (./report.aux) ) 
+[3] <Figures/images_trainingdata_scatter.png, id=20, 578.16pt x 433.62pt>
+File: Figures/images_trainingdata_scatter.png Graphic file (type png)
+
+<use Figures/images_trainingdata_scatter.png>
+<Figures/contourscoast0.png, id=22, 578.16pt x 433.62pt>
+File: Figures/contourscoast0.png Graphic file (type png)
+
+<use Figures/contourscoast0.png>
+<Figures/contourscoast5.png, id=23, 578.16pt x 433.62pt>
+File: Figures/contourscoast5.png Graphic file (type png)
+
+<use Figures/contourscoast5.png>
+<Figures/contourscoast15.png, id=24, 578.16pt x 433.62pt>
+File: Figures/contourscoast15.png Graphic file (type png)
+
+<use Figures/contourscoast15.png>
+<Figures/contourscoast30.png, id=25, 578.16pt x 433.62pt>
+File: Figures/contourscoast30.png Graphic file (type png)
+
+<use Figures/contourscoast30.png>
+<Figures/contours_diagcoast0.png, id=26, 578.16pt x 433.62pt>
+File: Figures/contours_diagcoast0.png Graphic file (type png)
+
+<use Figures/contours_diagcoast0.png>
+<Figures/contours_diagcoast5.png, id=27, 578.16pt x 433.62pt>
+File: Figures/contours_diagcoast5.png Graphic file (type png)
+
+<use Figures/contours_diagcoast5.png>
+<Figures/contours_diagcoast15.png, id=28, 578.16pt x 433.62pt>
+File: Figures/contours_diagcoast15.png Graphic file (type png)
+
+<use Figures/contours_diagcoast15.png>
+<Figures/contours_diagcoast30.png, id=29, 578.16pt x 433.62pt>
+File: Figures/contours_diagcoast30.png Graphic file (type png)
+
+<use Figures/contours_diagcoast30.png>
+Overfull \hbox (7.3pt too wide) in paragraph at lines 66--130
+[] [] [] [] 
+ []
+
+
+Overfull \hbox (7.3pt too wide) in paragraph at lines 66--130
+[] [] [] [] 
+ []
+
+<Figures/contoursforest0.png, id=30, 578.16pt x 433.62pt>
+File: Figures/contoursforest0.png Graphic file (type png)
+
+<use Figures/contoursforest0.png>
+<Figures/contoursforest5.png, id=31, 578.16pt x 433.62pt>
+File: Figures/contoursforest5.png Graphic file (type png)
+
+<use Figures/contoursforest5.png>
+<Figures/contoursforest15.png, id=32, 578.16pt x 433.62pt>
+File: Figures/contoursforest15.png Graphic file (type png)
+
+<use Figures/contoursforest15.png>
+<Figures/contoursforest30.png, id=33, 578.16pt x 433.62pt>
+File: Figures/contoursforest30.png Graphic file (type png)
+
+<use Figures/contoursforest30.png>
+<Figures/contours_diagforest0.png, id=34, 578.16pt x 433.62pt>
+File: Figures/contours_diagforest0.png Graphic file (type png)
+
+<use Figures/contours_diagforest0.png>
+<Figures/contours_diagforest5.png, id=35, 578.16pt x 433.62pt>
+File: Figures/contours_diagforest5.png Graphic file (type png)
+
+<use Figures/contours_diagforest5.png>
+<Figures/contours_diagforest15.png, id=36, 578.16pt x 433.62pt>
+File: Figures/contours_diagforest15.png Graphic file (type png)
+
+<use Figures/contours_diagforest15.png>
+<Figures/contours_diagforest30.png, id=37, 578.16pt x 433.62pt>
+File: Figures/contours_diagforest30.png Graphic file (type png)
+
+<use Figures/contours_diagforest30.png>
+Overfull \hbox (7.3pt too wide) in paragraph at lines 131--195
+[] [] [] [] 
+ []
+
+
+Overfull \hbox (7.3pt too wide) in paragraph at lines 131--195
+[] [] [] [] 
+ []
+
+[4 <./Figures/images_trainingdata_scatter.png> <./Figures/contourscoast0.png> <
+./Figures/contourscoast5.png> <./Figures/contourscoast15.png> <./Figures/contou
+rscoast30.png> <./Figures/contours_diagcoast0.png> <./Figures/contours_diagcoas
+t5.png> <./Figures/contours_diagcoast15.png> <./Figures/contours_diagcoast30.pn
+g>] <Figures/contoursstreet0.png, id=50, 578.16pt x 433.62pt>
+File: Figures/contoursstreet0.png Graphic file (type png)
+
+<use Figures/contoursstreet0.png>
+<Figures/contoursstreet5.png, id=51, 578.16pt x 433.62pt>
+File: Figures/contoursstreet5.png Graphic file (type png)
+
+<use Figures/contoursstreet5.png>
+<Figures/contoursstreet15.png, id=52, 578.16pt x 433.62pt>
+File: Figures/contoursstreet15.png Graphic file (type png)
+
+<use Figures/contoursstreet15.png>
+<Figures/contoursstreet30.png, id=53, 578.16pt x 433.62pt>
+File: Figures/contoursstreet30.png Graphic file (type png)
+
+<use Figures/contoursstreet30.png>
+<Figures/contours_diagstreet0.png, id=54, 578.16pt x 433.62pt>
+File: Figures/contours_diagstreet0.png Graphic file (type png)
+
+<use Figures/contours_diagstreet0.png>
+<Figures/contours_diagstreet5.png, id=55, 578.16pt x 433.62pt>
+File: Figures/contours_diagstreet5.png Graphic file (type png)
+
+<use Figures/contours_diagstreet5.png>
+<Figures/contours_diagstreet15.png, id=56, 578.16pt x 433.62pt>
+File: Figures/contours_diagstreet15.png Graphic file (type png)
+
+<use Figures/contours_diagstreet15.png>
+<Figures/contours_diagstreet30.png, id=57, 578.16pt x 433.62pt>
+File: Figures/contours_diagstreet30.png Graphic file (type png)
+
+<use Figures/contours_diagstreet30.png>
+Overfull \hbox (7.3pt too wide) in paragraph at lines 196--260
+[] [] [] [] 
+ []
+
+
+Overfull \hbox (7.3pt too wide) in paragraph at lines 196--260
+[] [] [] [] 
+ []
+
+<Figures/gmm_images_confusion.png, id=58, 442.2924pt x 442.2924pt>
+File: Figures/gmm_images_confusion.png Graphic file (type png)
+
+<use Figures/gmm_images_confusion.png>
+<Figures/confusion_diag.png, id=59, 433.62pt x 433.62pt>
+File: Figures/confusion_diag.png Graphic file (type png)
+
+<use Figures/confusion_diag.png>
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 264--280
+[] [] 
+ []
+
+[5 <./Figures/contoursforest0.png> <./Figures/contoursforest5.png> <./Figures/c
+ontoursforest15.png> <./Figures/contoursforest30.png> <./Figures/contours_diagf
+orest0.png> <./Figures/contours_diagforest5.png> <./Figures/contours_diagforest
+15.png> <./Figures/contours_diagforest30.png> <./Figures/contoursstreet0.png> <
+./Figures/contoursstreet5.png> <./Figures/contoursstreet15.png> <./Figures/cont
+oursstreet30.png> <./Figures/contours_diagstreet0.png> <./Figures/contours_diag
+street5.png> <./Figures/contours_diagstreet15.png> <./Figures/contours_diagstre
+et30.png>] <Figures/GMM_precisionvsk_BGR.png, id=79, 586.8324pt x 442.2924pt>
+File: Figures/GMM_precisionvsk_BGR.png Graphic file (type png)
+
+<use Figures/GMM_precisionvsk_BGR.png>
+<Figures/GMM_recallvsk_BGR.png, id=80, 586.8324pt x 442.2924pt>
+File: Figures/GMM_recallvsk_BGR.png Graphic file (type png)
+
+<use Figures/GMM_recallvsk_BGR.png>
+Overfull \hbox (2.43333pt too wide) in paragraph at lines 283--300
+[] [] 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 283--300
+
+ []
+
+[6 <./Figures/gmm_images_confusion.png> <./Figures/confusion_diag.png> <./Figur
+es/GMM_precisionvsk_BGR.png> <./Figures/GMM_recallvsk_BGR.png>] (./report.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 1846 strings out of 494647
- 21673 string characters out of 1173989
- 73862 words of memory out of 3000000
- 5062 multiletter control sequences out of 15000+50000
- 10737 words of font info for 41 fonts, out of 3000000 for 9000
+ 1998 strings out of 494647
+ 26411 string characters out of 1173989
+ 73909 words of memory out of 3000000
+ 5183 multiletter control sequences out of 15000+50000
+ 11044 words of font info for 42 fonts, out of 3000000 for 9000
  297 hyphenation exceptions out of 8191
- 27i,6n,24p,431b,197s stack positions out of 5000i,500n,10000p,200000b,50000s
-</usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
-m/cmbx12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pf
-b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-tex
-live/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/t
-ype1/public/amsfonts/cm/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmr17.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmr8.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
-Output written on report.pdf (4 pages, 110220 bytes).
+ 27i,7n,24p,431b,262s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/sha
+re/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-te
+xlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texmf-texlive/fonts/type1/publi
+c/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/c
+m/cmr12.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr17.pfb>
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/t
+exmf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
+Output written on report.pdf (6 pages, 5621925 bytes).
 PDF statistics:
- 51 PDF objects out of 1000 (max. 8388607)
+ 116 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 146 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -139,8 +139,8 @@ def putplots(k,clusters,iters):
     #plt.savefig('trainingdata_scatter.png')
 
     plt.clf()
-    x = np.arange(-20.0,20.0,0.1)
-    y = np.arange(-20.0,20.0,0.1)
+    x = np.arange(0.0,1.0,0.01)
+    y = np.arange(0.0,1.0,0.01)
     X,Y = np.meshgrid(x,y)
     z = []
     for i in range(clusters):
@@ -152,10 +152,10 @@ def putplots(k,clusters,iters):
 
     plt.scatter(classdata[k][:,0],classdata[k][:,1], s=1, color = colors[k%3], marker = 'o')
     plt.title('Training Data and mixture components')
-    plt.savefig('contours_digit'+dirs[k]+str(iters)+'.png')
+    plt.savefig('contours_diag'+dirs[k]+str(iters)+'.png')
 
 # Read files - split to train and test
-rootpath = 'Digits/digit_data'
+rootpath = 'GMM/features'
 path, dirs, files  = os.walk(rootpath).next()
 datadict = dict()
 trdict, testdict = dict(), dict()
@@ -182,14 +182,14 @@ for k, v in trdict.iteritems():
 print np.shape(classdata[0]), np.shape(classdata[1]), np.shape(classdata[2])
 
 #Train the GMMs for each class
-iters = [0,5,15,20]
+iters = [0,5,15,30]
 for n_iter in iters:
     GMMs = []
     for i in range(len(dirs)):
         print "Training GMM for", dirs[i]
-        GMMs.append(GMM(classdata[i], 2, "full"))
+        GMMs.append(GMM(classdata[i], 4, "diagonal"))
         GMMs[i].EMfit(classdata[i], n_iter)
-        putplots(i,2,n_iter)
+        putplots(i,4,n_iter)
         #GMMs[i].saveloglikelihood('likelihood_digits'+str(i))
             
 #Use GMMs for testing  

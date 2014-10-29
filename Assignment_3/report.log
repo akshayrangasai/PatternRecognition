@@ -1,4 +1,8 @@
+<<<<<<< HEAD
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2014.10.15)  29 OCT 2014 02:08
+=======
 This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2014.8.26)  29 OCT 2014 02:19
+>>>>>>> 1912bd5e61090ae24e9bb3b40c798f0d23c77829
 entering extended mode
  %&-line parsing enabled.
 **report.tex
@@ -286,6 +290,8 @@ LaTeX Warning: Label `fig:sfig1' multiply defined.
 
 LaTeX Warning: Label `fig:sfig1' multiply defined.
 
+<<<<<<< HEAD
+=======
 
 LaTeX Warning: Label `fig:sfig1' multiply defined.
 
@@ -424,6 +430,7 @@ LaTeX Warning: Label `fig:sfig1' multiply defined.
 
 LaTeX Warning: Label `fig:sfig1' multiply defined.
 
+>>>>>>> 1912bd5e61090ae24e9bb3b40c798f0d23c77829
 )
 \openout1 = `report.aux'.
 
@@ -1076,6 +1083,26 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
+ 2473 strings out of 494989
+ 37278 string characters out of 6180576
+ 79167 words of memory out of 5000000
+ 5587 multiletter control sequences out of 15000+600000
+ 11520 words of font info for 44 fonts, out of 8000000 for 9000
+ 36 hyphenation exceptions out of 8191
+ 27i,8n,26p,487b,281s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.
+pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/tex
+live/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/te
+xmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/share/texlive/texmf-dist/fonts
+/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmsy10.pfb>
+Output written on report.pdf (11 pages, 9042340 bytes).
+=======
  2375 strings out of 494647
  38243 string characters out of 1173989
  74911 words of memory out of 3000000
@@ -1093,6 +1120,7 @@ cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr12.pfb
 /texmf-texlive/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texmf-texliv
 e/fonts/type1/public/amsfonts/cm/cmsy10.pfb>
 Output written on report.pdf (16 pages, 14933276 bytes).
+>>>>>>> 1912bd5e61090ae24e9bb3b40c798f0d23c77829
 PDF statistics:
  303 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)

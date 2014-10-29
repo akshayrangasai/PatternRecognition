@@ -1012,5 +1012,20 @@ The feature vectors were first quantized using a K-means clustering with number 
 \end{tabular}
 
 \end{center}
-
+\subsection{Digits Dataset}
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=.8\linewidth]{Figures/confusion_digit_HMM.png}
+\caption{Confusion matrix for HMM Digits}
+  \label{fig:sfig1}
+\end{figure}%
+\begin{center}
+\begin{tabular}{|c|c|c|c|c|c|}
+\hline
+\textbf{Precision} & 0.75 & 0.84 & 1.0 & 1.0 & 1.0 \\ \hline
+\textbf{Recall} & 1.0 & 1.0 & 0.86 & 0.86 & 0.91 \\ \hline
+\end{tabular}
+\end{center}
+\section{Conclusion}
+From the exercise, it is clear that GMMs and HMMs are good at different classification tasks. HMMs outperform GMM for sequential data, while GMMs are far superior when it comes to data with spatial features. HMMs work well with temporal features.
 \end{document}
